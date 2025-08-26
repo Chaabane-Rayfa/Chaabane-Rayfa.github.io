@@ -54,7 +54,26 @@
 /* 5alli buttons fou9 el stretched link */
 .card.overlay .on-image, 
 .card.overlay .btn { position: relative; z-index:2; }
+/* card clickable بالكامل يفتح في تبويب جديد */
+.card { position: relative; }
 
+/* يخلي الكارت الكل clickable من غير ما نعمل nesting <a> جوّا <a> */
+.card .stretched {
+  position: absolute; inset: 0; z-index: 1;
+}
+
+/* محتوى الكارت فوق ال-link */
+.card .inner { position: relative; z-index: 2; }
+
+/* ستايل للعنوان والكوفر (اسم فوق - صورة تحت) */
+.card .titlebar{
+  padding:12px 14px; font-weight:800; font-size:18px;
+}
+.card .cover{
+  width:100%; aspect-ratio:16/9; display:block;
+  background-size:cover; background-position:center;
+  border-top:1px solid rgba(0,0,0,.06);
+}
 .card.overlay .cover{
   display:block;
   width:100%;
@@ -120,8 +139,8 @@
     <div class="grid">
 
       <!-- CARD 1 -->
-    <div class="card overlay">
-      <a class="stretched" href="pages/biosensor-adapter-overview.html" aria-label="Open BioSensor Adapter overview"></a>
+   <div class="card">
+      <a class="stretched" href="Pages/Sensor_Adapter/Index.html" aria-label="Open BioSensor Adapter overview"></a>
        <div class="cover" style="background-image:url('files/Sensor_Adapter_3D_Model.png');"></div>
   <div class="shade"></div>
   <div class="on-image">
