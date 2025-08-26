@@ -46,6 +46,49 @@
   .desc{margin:0 0 12px; color:var(--muted); font-size:14px}
   .tags{display:flex; gap:8px; flex-wrap:wrap; margin:0 0 12px}
   .tag{font-size:12px; padding:4px 8px; border-radius:999px; background:#eef2ff; color:#3730a3}
+  /* ---- Card overlay style ---- */
+.card.overlay { position: relative; overflow: hidden; }
+
+.card.overlay .cover {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+}
+
+/* gradient for readability */
+.card.overlay .shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.6) 0%, rgba(0,0,0,.0) 60%);
+  pointer-events: none; /* khalih ma y3ayye9ch buttons */
+}
+
+/* content that sits on top of the image */
+.card.overlay .on-image {
+  position: absolute;
+  left: 16px; right: 16px; bottom: 16px;
+  display: grid; gap: 10px;
+  color: #fff;               /* ktiba bayda fou9 image */
+}
+
+.card.overlay .title { margin: 0; font-size: 20px; font-weight: 800; color:#fff; }
+.card.overlay .desc  { margin: 0; font-size: 14px; opacity: .9; color:#fff; }
+
+/* tags on image */
+.card.overlay .tag { background: rgba(255,255,255,.18); color:#fff; border:1px solid rgba(255,255,255,.25); }
+
+/* buttons on image */
+.card.overlay .btn {
+  background: rgba(255,255,255,.15);
+  color:#fff;
+  border: 1px solid rgba(255,255,255,.35);
+  backdrop-filter: blur(4px);
+}
+.card.overlay .btn.primary { background: rgba(37,99,235,.85); border-color: transparent; }
+.card.overlay .btn:hover { filter: brightness(1.05); }
+
   /* actions */
   .actions{display:flex; gap:10px; flex-wrap:wrap}
   .btn{
@@ -71,7 +114,8 @@
       <!-- CARD 1 -->
      
         <img class="cover" src="files/Sensor_Adapter_3D_Model.png" alt="Biosensor Adapter">
-        <div class="content">
+       <div class="shade"></div>
+      <div class="on-image">
           <h3 class="title">BioSensor Adapter</h3>
           <p class="desc">KiCad design for removable Biosensor connector with custom edge adapter.</p>
           <div class="tags">
