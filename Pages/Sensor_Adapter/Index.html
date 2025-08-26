@@ -7,6 +7,31 @@
 <style>
   :root{ --bg:#0b1020; --card:#121733; --ink:#e5e7eb; --muted:#9ca3af; --brand:#60a5fa; --radius:16px; }
   *{box-sizing:border-box}
+  <script>
+  // Get lightbox elements
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightbox-img");
+  const closeBtn = document.querySelector(".lightbox .close");
+
+  // When clicking on any gallery image
+  document.querySelectorAll(".triptych img").forEach(img => {
+    img.addEventListener("click", () => {
+      lightbox.style.display = "flex"; // show
+      lightboxImg.src = img.src;       // set image
+    });
+  });
+
+  // Close when clicking X
+  closeBtn.onclick = () => { lightbox.style.display = "none"; }
+
+  // Close when clicking outside the image
+  lightbox.onclick = (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = "none";
+    }
+  }
+</script>
+
   body{margin:0; font:16px/1.6 system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--ink);
        background:radial-gradient(1200px 600px at 20% -10%, #1a224533, transparent), var(--bg)}
   a{color:var(--brand); text-decoration:none} a:hover{text-decoration:underline}
@@ -44,8 +69,44 @@
 }
   /* back link */
   .back{display:inline-block; margin-top:8px}
+  /* Lightbox overlay */
+.lightbox {
+  display: none; /* hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+/* The image inside */
+.lightbox-content {
+  max-width: 90%;
+  max-height: 80%;
+  border-radius: 10px;
+  box-shadow: 0 0 20px #000;
+}
+
+/* Close button (X) */
+.lightbox .close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 </style>
 </head>
+  <!-- Lightbox (hidden by default) -->
+<div id="lightbox" class="lightbox">
+  <span class="close">&times;</span>
+  <img class="lightbox-content" id="lightbox-img">
+</div>
+
 <body>
   <div class="container">
 
@@ -55,7 +116,6 @@
       <p class="muted">Project overview</p>
     </div>
 
-}
     <!-- Overview -->
     <div class="section">
       <h2>Overview</h2>
