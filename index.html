@@ -1,85 +1,124 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rayfa Chaabane Portfolio</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background: #f9f9f9;
-      color: #333;
-    }
-    h1, h2, {
-      color: #2c3e50;
-    }
-    .Projects {
-      background: Yellow;
-      padding: 20px;
-      margin: 20px 0;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    a {
-      color: #2980b9;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rayfa Chaabane • Portfolio</title>
+<style>
+  :root{
+    --bg:#f6f7fb; --card:#ffffff; --ink:#1f2937; --muted:#6b7280;
+    --brand:#2563eb; --ring:rgba(37,99,235,.15);
+    --radius:16px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#0b1020; --card:#121733; --ink:#e5e7eb; --muted:#9ca3af; --brand:#60a5fa; --ring:rgba(96,165,250,.25); }
+    img{filter: saturate(.95);}
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:40px 20px; font:16px/1.6 system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink); background:radial-gradient(1200px 600px at 20% -10%, #e8ecff33, transparent), var(--bg);
+  }
+  .container{max-width:1100px; margin:0 auto}
+  h1{margin:0 0 8px; font-size:34px;}
+  p.lead{margin:0 0 28px; color:var(--muted)}
+  /* grid */
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap:24px;
+  }
+  /* card */
+  a.card{
+    display:block; background:var(--card); border-radius:var(--radius);
+    box-shadow:0 8px 24px rgba(0,0,0,.06);
+    text-decoration:none; color:inherit; overflow:hidden;
+    border:1px solid rgba(0,0,0,.04);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  a.card:focus-visible{outline:3px solid var(--ring)}
+  a.card:hover{transform:translateY(-4px); box-shadow:0 14px 32px rgba(0,0,0,.12)}
+  .cover{
+    aspect-ratio:16/9; width:100%; object-fit:cover; display:block;
+  }
+  .content{padding:16px 16px 12px}
+  .title{font-weight:700; font-size:18px; margin:0 0 4px}
+  .desc{margin:0 0 12px; color:var(--muted); font-size:14px}
+  .tags{display:flex; gap:8px; flex-wrap:wrap; margin:0 0 12px}
+  .tag{font-size:12px; padding:4px 8px; border-radius:999px; background:#eef2ff; color:#3730a3}
+  /* actions */
+  .actions{display:flex; gap:10px; flex-wrap:wrap}
+  .btn{
+    display:inline-block; padding:8px 12px; border-radius:10px; font-size:14px;
+    border:1px solid rgba(0,0,0,.1); background:#fff; color:var(--brand);
+  }
+  .btn:hover{background:#f3f6ff}
+  .btn.primary{background:var(--brand); color:#fff; border-color:transparent}
+  .btn.primary:hover{filter:brightness(.95)}
+  /* small header spacing */
+  .section-title{margin:28px 0 14px}
+</style>
 </head>
 <body>
-  <h1>My Engineering Portfolio</h1>
-  <p>Hello, I’m <strong>Rayfa Chaabane</strong>. Welcome to my portfolio, where I showcase my code projects, 3D CAD models, and PCB designs.</p>
+  <div class="container">
+    <h1>My Engineering Portfolio</h1>
+    <p class="lead">Hi, I’m <strong>Rayfa Chaabane</strong>. Projects in PCB design, biosensors & CAD.</p>
 
-  <h2>Projects</h2>
-  
-  
-  <div class="Projects">
-    <h3>PCB Designs</h3>
-    <p>PCB projects designed in KiCad .</p>
-    <p>BioSensor Adapter .</p>
-    <ul>
-      <li><a href="images/dummycell_3d.png" target="_blank">OverView</a></li>
-      <li><a href="files/Sensor_Adapter_Gerber.zip">Download Gerber File</a></li>
-      <li><a href="files/Sensor_Adapter.png" target="_blank" rel="noopener noreferrer">Design_Images</a></li>
-    </ul>
-    <p>DC DummyCell .</p>
-    <ul>
-      <li><a href="images/dummycell_3d.png" target="_blank">OverView</a></li>
-      <li><a href="files/DummyCell_Gerber.zip">Download Gerber File</a></li>
-      <li><a href="files/Sensor_Adapter_3D_Model.png">Design_Images</a></li>
-    </ul>
-    <p>DummySensor .</p>
-    <ul>
-      <li><a href="images/dummycell_3d.png" target="_blank">OverView</a></li>
-      <li><a href="files/DummyCell_Gerber.zip">Download Gerber File</a></li>
-      <li><a href="files/Sensor_Adapter_3D_Model.png">Design_Images</a></li>
-    </ul>
-    <p>Flexible PCB .</p>
-    <ul>
-      <li><a href="images/dummycell_3d.png" target="_blank">OverView</a></li>
-      <li><a href="files/DummyCell_Gerber.zip">Download Gerber File</a></li>
-      <li><a href="files/Sensor_Adapter_3D_Model.png">Design_Images</a></li>
-    </ul>
+    <h2 class="section-title">Projects</h2>
+
+    <div class="grid">
+
+      <!-- CARD 1 -->
+      <a class="card" href="files/Sensor_Adapter_3D_Model.png" target="_blank" rel="noopener noreferrer">
+        <img class="cover" src="images/sensor-adapter/cover.jpg" alt="Biosensor Adapter cover">
+        <div class="content">
+          <h3 class="title">BioSensor Adapter</h3>
+          <p class="desc">KiCad design for removable biosensor connector with custom edge adapter.</p>
+          <div class="tags">
+            <span class="tag">KiCad</span><span class="tag">PCB</span><span class="tag">Biosensor</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="pages/biosensor-adapter-overview.html" target="_blank" rel="noopener noreferrer">Overview</a>
+            <a class="btn" href="files/Sensor_Adapter_Gerber.zip" target="_blank" rel="noopener noreferrer">Download Gerbers</a>
+            <a class="btn" href="files/Sensor_Adapter.png" target="_blank" rel="noopener noreferrer">Design Images</a>
+          </div>
+        </div>
+      </a>
+
+      <!-- CARD 2 -->
+      <a class="card" href="images/dc-dummycell/cover.jpg" target="_blank" rel="noopener noreferrer">
+        <img class="cover" src="images/dc-dummycell/cover.jpg" alt="DC DummyCell cover">
+        <div class="content">
+          <h3 class="title">DC DummyCell</h3>
+          <p class="desc">Fixture PCB for electrical testing of electrochemical sensors.</p>
+          <div class="tags">
+            <span class="tag">KiCad</span><span class="tag">Testing</span>
+          </div>
+          <div class="actions">
+            <a class="btn primary" href="pages/dc-dummycell-overview.html" target="_blank" rel="noopener noreferrer">Overview</a>
+            <a class="btn" href="files/dc-dummycell/DC_DummyCell_Gerber.zip" target="_blank" rel="noopener noreferrer">Download Gerbers</a>
+            <a class="btn" href="images/dc-dummycell/cover.jpg" target="_blank" rel="noopener noreferrer">Design Images</a>
+          </div>
+        </div>
+      </a>
+
+      <!-- CARD 3 (example CAD project) -->
+      <a class="card" href="images/cad-project1/cover.jpg" target="_blank" rel="noopener noreferrer">
+        <img class="cover" src="images/cad-project1/cover.jpg" alt="CAD Project cover">
+        <div class="content">
+          <h3 class="title">3D CAD – Project 1</h3>
+          <p class="desc">SolidWorks assembly with printable fixtures for lab use.</p>
+          <div class="tags">
+            <span class="tag">SolidWorks</span><span class="tag">3D</span>
+          </div>
+          <div class="actions">
+            <a class="btn" href="files/cad-project1.zip" target="_blank" rel="noopener noreferrer">Download CAD</a>
+            <a class="btn" href="images/cad-project1/render.png" target="_blank" rel="noopener noreferrer">View Render</a>
+          </div>
+        </div>
+      </a>
+
+    </div>
   </div>
-
-  <div class="Projects">
-    <h3>3D CAD Models</h3>
-    <p>SolidWorks 3D CAD designs.</p>
-     <p>Project1.</p>
-    <ul>
-      <li><a href="files/Fixture.zip" target="_blank">Download CAD Files</a></li>
-      <li><a href="images/fixture_render.png" target="_blank">View Render</a></li>
-    </ul>
-      <p>Project2.</p>
-    <ul>
-      <li><a href="files/Fixture.zip" target="_blank">Download CAD Files</a></li>
-      <li><a href="images/fixture_render.png" target="_blank">View Render</a></li>
-    </ul>
-  </div>
-
 </body>
 </html>
