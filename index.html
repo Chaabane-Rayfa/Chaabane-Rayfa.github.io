@@ -47,7 +47,13 @@
   .tags{display:flex; gap:8px; flex-wrap:wrap; margin:0 0 12px}
   .tag{font-size:12px; padding:4px 8px; border-radius:999px; background:#eef2ff; color:#3730a3}
   /* ---- Card overlay style ---- */
-.card.overlay { position: relative; overflow: hidden; }
+.card.overlay { position: relative; }
+.card.overlay .stretched{
+  position:absolute; inset:0; z-index:1;
+}
+/* 5alli buttons fou9 el stretched link */
+.card.overlay .on-image, 
+.card.overlay .btn { position: relative; z-index:2; }
 
 .card.overlay .cover {
   width: 100%;
@@ -112,6 +118,7 @@
 
       <!-- CARD 1 -->
     <div class="card overlay">
+      <a class="stretched" href="pages/biosensor-adapter-overview.html" aria-label="Open BioSensor Adapter overview"></a>
        <div class="cover" style="background-image:url('files/Sensor_Adapter_3D_Model.png');"></div>
   <div class="shade"></div>
   <div class="on-image">
