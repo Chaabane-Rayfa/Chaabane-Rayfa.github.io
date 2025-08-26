@@ -125,6 +125,18 @@
   padding:7px 10px; font-size:13px; border-radius:9px;
 }
   .section-title{margin:28px 0 14px}
+  .cat{margin:26px 0}
+.cat-title{
+  margin:0 0 10px;
+  font-size:20px; font-weight:800;
+  color:var(--ink);
+}
+.cat .grid{ margin-top:8px; }
+.cat + .cat{ border-top:1px solid rgba(0,0,0,.08); padding-top:22px; }
+@media (prefers-color-scheme: dark){
+  .cat + .cat{ border-top:1px solid #ffffff14; }
+}
+
 </style>
 </head>
 <body>
@@ -135,7 +147,11 @@
     <h2 class="section-title">Projects</h2>
 
     <div class="grid">
-
+      
+<!-- KICAD PROJECTS -->
+<section class="cat">
+  <h3 class="cat-title">KiCad Projects</h3>
+  <div class="grid">
       <!-- CARD 1 -->
   <div class="card overlay">
       <a class="stretched" href="Pages/Sensor_Adapter/Index.html" aria-label="Open BioSensor Adapter overview"></a>
@@ -150,23 +166,53 @@
       <!-- CARD 2 -->
      <div class="card overlay">
       <a class="stretched" href="Pages/Sensor_Adapter/Index.html" aria-label="Open BioSensor Adapter overview"></a>
-       <div class="cover" style="background-image:url('files/Sensor_Adapter_3D_Model.png');"></div>
+       <div class="cover" style="background-image:url('files/DC_DummyCell.png');"></div>
   <div class="shade"></div>
+  <div class="on-image">
           <h3 class="title">DC DummyCell</h3>
           <p class="desc">Fixture PCB for electrical testing of electrochemical sensors.</p>
         
         </div>
   </div>
+      </div>
+</section>
+      
+<!-- SOLIDWORKS / 3D CAD -->
+<section class="cat">
+  <h3 class="cat-title">SolidWorks / 3D CAD</h3>
+  <div class="grid">
       <!-- CARD 3 (example CAD project) -->
          <div class="card overlay">
       <a class="stretched" href="Pages/Sensor_Adapter/Index.html" aria-label="Open BioSensor Adapter overview"></a>
        <div class="cover" style="background-image:url('files/Sensor_Adapter_3D_Model.png');"></div>
   <div class="shade"></div>
+   <div class="on-image">
           <h3 class="title">3D CAD – Project 1</h3>
           <p class="desc">SolidWorks assembly with printable fixtures for lab use.</p>
        
-        </div>
-</div>
+        </div> 
+         </div>
+      </div>
+</section> 
+<!-- CODING (تنجم تزيدها وقت تحب) -->
+<section class="cat">
+  <h3 class="cat-title">Coding Projects</h3>
+  <div class="grid">
+    <!-- حط الكروت متاع الكود كي تجهّزهم -->
+    <!-- example:
+    <div class="card">
+      <a class="stretched" href="pages/my-app/"></a>
+      <div class="cover" style="background-image:url('images/my-app/cover.png');"></div>
+      <div class="content">
+        <h3 class="title">My Web App</h3>
+        <p class="desc">Small JS tool for …</p>
+      </div>
+    </div>
+    -->
+  </div>
+</section>
+
+      
     </div>
   </div>
 </body>
