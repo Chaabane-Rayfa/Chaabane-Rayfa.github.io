@@ -5,234 +5,121 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Rayfa Chaabane • Portfolio</title>
 <style>
-  /* ===== Palette (from your image) =====
-     Navy  : #0F2B59
-     Teal  : #0B7285
-     Slate : #6C8096
-     Rose  : #D86C82
-     Peach : #F7C29A
-  */
-/* ===== Palette (from your image, lighter navy theme) ===== */
-:root{
-  --navy:#14396F;   /* lighter marine */
-  --teal:#0B7285;
-  --slate:#6C8096;
-  --rose:#D86C82;
-  --peach:#F7C29A;
-
-  --bg:#102B57;           /* page background (lighter navy) */
-  --card:#0f1b34;         /* card base (dark but not black) */
-  --ink:#E9EEF6;          /* main text */
-  --muted:#B9C4D6;
-  --brand:var(--teal);
-  --brand-2:var(--rose);
-  --brand-3:var(--peach);
-  --ring:rgba(11,114,133,.28);
-  --radius:18px;
-}
-
-@media (prefers-color-scheme: light){
+  /* ===== Palette (lighter marine theme) ===== */
   :root{
-    --bg:#F7FAFF;
-    --card:#ffffff;
-    --ink:#142033;
-    --muted:#5f6e85;
-    --ring:rgba(11,114,133,.22);
+    --navy:#14396F; --teal:#0B7285; --slate:#6C8096; --rose:#D86C82; --peach:#F7C29A;
+    --bg:#102B57; --card:#0f1b34; --ink:#E9EEF6; --muted:#B9C4D6;
+    --brand:var(--teal); --brand-2:var(--rose); --brand-3:var(--peach);
+    --ring:rgba(11,114,133,.28); --radius:18px;
   }
-}
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#F7FAFF; --card:#ffffff; --ink:#142033; --muted:#5f6e85; --ring:rgba(11,114,133,.22); }
+  }
 
-*{box-sizing:border-box}
-body{
-  margin:0; padding:40px 20px;
-  font:16px/1.6 system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-  color:var(--ink);
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:40px 20px; font:16px/1.6 system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--ink);
+    /* fancy background */
+    background:
+      radial-gradient(900px 520px at 15% -10%, color-mix(in oklab, var(--teal) 22%, transparent), transparent 70%),
+      radial-gradient(720px 420px at 75% -18%, color-mix(in oklab, var(--rose) 20%, transparent), transparent 72%),
+      radial-gradient(640px 360px at 50% 120%, color-mix(in oklab, var(--peach) 22%, transparent), transparent 74%),
+      conic-gradient(from 210deg at 80% 10%, #ffffff08, #0000 25%, #ffffff05 55%, #0000 100%),
+      var(--bg);
+    background-attachment: fixed;
+  }
+  .container{max-width:1100px; margin:0 auto}
 
-  /* ===== Fancy layered background (lighter, lively) ===== */
-  background:
-    radial-gradient(900px 520px at 15% -10%, color-mix(in oklab, var(--teal) 22%, transparent), transparent 70%),
-    radial-gradient(720px 420px at 75% -18%, color-mix(in oklab, var(--rose) 20%, transparent), transparent 72%),
-    radial-gradient(640px 360px at 50% 120%, color-mix(in oklab, var(--peach) 22%, transparent), transparent 74%),
-    conic-gradient(from 210deg at 80% 10%, #ffffff08, #00000000 25%, #ffffff05 55%, #0000 100%),
-    var(--bg);
-  background-attachment: fixed;
-}
+  /* ===== HERO (two columns) ===== */
+  .hero{
+    display:grid; grid-template-columns: 1.05fr 1.6fr;
+    gap:36px; align-items:end; margin-bottom:28px;
+  }
+  .brand-name{
+    margin:0;
+    font-size: clamp(38px, 6vw, 72px);
+    line-height: .95; letter-spacing:.2px; font-weight:900;
+    background: linear-gradient(180deg, #fff, color-mix(in oklab, #fff 70%, var(--peach) 30%));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    text-shadow: 0 6px 24px #00000030;
+  }
+  .hero-title{
+    margin:0 0 8px;
+    font-size: clamp(26px, 3.2vw, 40px);
+    font-weight:800;
+    text-align:left;
+    position:relative; padding-left:26px;   /* يزحّها شوية على اليمين */
+  }
+  .hero-title::before{
+    content:""; position:absolute; left:0; top:50%; transform:translateY(-50%);
+    width:14px; height:14px; border-radius:50%;
+    background: radial-gradient(circle at 30% 30%, var(--peach), var(--rose));
+    box-shadow:0 0 18px color-mix(in oklab, var(--peach) 50%, transparent);
+  }
+  .lead{margin:0 0 10px; color:var(--muted)}
+  .lead.dim{ color: color-mix(in oklab, var(--muted) 85%, var(--ink) 15%); } /* مغمّقة شوية */
+  .hero-right{ padding-left:16px; } /* “على اليمين شوية” */
 
-.container{max-width:1100px; margin:0 auto}
-h1{margin:0 0 8px; font-size:42px; letter-spacing:.2px;}
-p.lead{margin:0 0 28px; color:var(--muted)}
+  /* ===== grid ===== */
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); /* أصغر شوية */
+    gap:20px;
+  }
 
-/* grid */
-.grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap:24px;
-}
+  /* ===== Card ===== */
+  .card{
+    display:block; background:linear-gradient(180deg, color-mix(in oklab, var(--card) 90%, #1a2a52 10%), var(--card));
+    border-radius:var(--radius);
+    box-shadow:0 18px 40px #00000026, inset 0 1px 0 #ffffff0c;
+    text-decoration:none; color:inherit; overflow:hidden;
+    border:1px solid #ffffff12;
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, filter .18s ease;
+  }
+  .card:focus-visible{outline:3px solid var(--ring)}
+  .card:hover{
+    transform:translateY(-6px);
+    box-shadow: 0 24px 50px #00000033, 0 0 0 1px color-mix(in oklab, var(--teal) 30%, transparent), 0 0 24px color-mix(in oklab, var(--peach) 24%, transparent);
+    border-color: color-mix(in oklab, var(--teal) 28%, transparent);
+    filter:saturate(1.03);
+  }
+  .cover{ width:100%; height:160px; object-fit:cover; display:block; border-bottom:1px solid #ffffff12; } /* أصغر */
+  .content{padding:14px 14px 10px}
+  .title{font-weight:800; font-size:17px; margin:0 0 4px}
+  .desc{margin:0 0 10px; color:var(--muted); font-size:13.5px}
 
-/* ===== Card (softer, glow on hover) ===== */
-.card{
-  display:block; background:linear-gradient(180deg, color-mix(in oklab, var(--card) 90%, #1a2a52 10%), var(--card));
-  border-radius:var(--radius);
-  box-shadow:0 18px 40px #00000026, inset 0 1px 0 #ffffff0c;
-  text-decoration:none; color:inherit; overflow:hidden;
-  border:1px solid #ffffff12;
-  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, filter .18s ease;
-}
-.card:focus-visible{outline:3px solid var(--ring)}
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:
-    0 24px 50px #00000033,
-    0 0 0 1px color-mix(in oklab, var(--teal) 30%, transparent),
-    0 0 24px color-mix(in oklab, var(--peach) 24%, transparent);
-  border-color: color-mix(in oklab, var(--teal) 28%, transparent);
-  filter:saturate(1.03);
-}
+  /* tags */
+  .tags{display:flex; gap:8px; flex-wrap:wrap; margin:0 0 10px}
+  .tag{
+    font-size:12px; padding:3px 9px; border-radius:999px;
+    background:linear-gradient(135deg, color-mix(in oklab, var(--peach) 60%, #fff 40%), color-mix(in oklab, var(--rose) 55%, #fff 45%));
+    color:#17233a; border:1px solid color-mix(in oklab, var(--rose) 38%, transparent);
+  }
 
-.cover{
-  width:100%; aspect-ratio:16/9; object-fit:cover; display:block;
-  border-bottom:1px solid #ffffff12;
-}
-.content{padding:16px 16px 12px}
-.title{font-weight:800; font-size:19px; margin:0 0 4px}
-.desc{margin:0 0 12px; color:var(--muted); font-size:14px}
+  /* ===== Overlay style ===== */
+  .card.overlay{ position:relative; }
+  .card.overlay .stretched{position:absolute; inset:0; z-index:1;}
+  .card.overlay .on-image,.card.overlay .btn{position:relative; z-index:2;}
+  .card .stretched{ position:absolute; inset:0; z-index:1; }
+  .card .inner{ position:relative; z-index:2; }
+  .card.overlay .shade{ position:absolute; inset:0; background:linear-gradient(to top, rgba(16,43,87,.65) 0%, rgba(16,43,87,0) 65%); pointer-events:none; }
+  .card.overlay .on-image{
+    position:absolute; left:12px; right:12px; bottom:8px;
+    display:grid; gap:8px; padding:10px; color:#fff;
+    background: color-mix(in oklab, rgba(11,114,133,.35) 60%, rgba(0,0,0,.25) 40%);
+    backdrop-filter: blur(12px);
+    border:1px solid color-mix(in oklab, var(--teal) 45%, #ffffff22 55%);
+    border-radius:12px;
+  }
+  .card.overlay .title{margin:0; font:800 18px/1.2 system-ui; text-shadow:0 1px 2px #0006}
+  .card.overlay .desc{margin:0; font-size:13px; opacity:.97}
 
-/* tags with gradient pills */
-.tags{display:flex; gap:8px; flex-wrap:wrap; margin:0 0 12px}
-.tag{
-  font-size:12px; padding:4px 10px; border-radius:999px;
-  background:linear-gradient(135deg, color-mix(in oklab, var(--peach) 60%, #fff 40%), color-mix(in oklab, var(--rose) 55%, #fff 45%));
-  color:#17233a; border:1px solid color-mix(in oklab, var(--rose) 38%, transparent);
-}
-
-/* ===== Overlay style (glass with lighter tint) ===== */
-.card.overlay{ position:relative; }
-.card.overlay .stretched{position:absolute; inset:0; z-index:1;}
-.card.overlay .on-image,.card.overlay .btn{position:relative; z-index:2;}
-.card .stretched{ position:absolute; inset:0; z-index:1; }
-.card .inner{ position:relative; z-index:2; }
-
-.card .titlebar{ padding:12px 14px; font-weight:800; font-size:18px; }
-.card.overlay .cover{ height:180px; }
-
-.card.overlay .shade{
-  position:absolute; inset:0;
-  background:linear-gradient(to top, rgba(16,43,87,.65) 0%, rgba(16,43,87,0) 65%);
-  pointer-events:none;
-}
-
-.card.overlay .on-image{
-  position:absolute; left:14px; right:14px; bottom:10px;
-  display:grid; gap:10px; padding:12px;
-  color:#fff;
-  background: color-mix(in oklab, rgba(11,114,133,.35) 60%, rgba(0,0,0,.25) 40%);
-  backdrop-filter: blur(12px);
-  border:1px solid color-mix(in oklab, var(--teal) 45%, #ffffff22 55%);
-  border-radius:14px;
-}
-.card.overlay .title{margin:0; font:800 20px/1.2 system-ui; text-shadow:0 1px 2px #00000040}
-.card.overlay .desc{margin:0; font-size:13.5px; opacity:.97}
-.card.overlay .tag{background:rgba(255,255,255,.18); color:#fff; border:1px solid rgba(255,255,255,.28)}
-.card.overlay .actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:2px}
-.card.overlay .btn{
-  background: color-mix(in oklab, #ffffff 18%, var(--navy) 82%);
-  color:#fff; border:1px solid rgba(255,255,255,.35);
-  padding:7px 10px; font-size:13px; border-radius:10px;
-}
-.card.overlay .btn.primary{
-  background: linear-gradient(135deg, var(--brand), var(--brand-2));
-  border-color:transparent;
-}
-.card.overlay .btn:hover{filter:brightness(1.08)}
-
-/* ===== Section headings underline with palette sweep ===== */
-.section-title{margin:28px 0 14px}
-.cat{margin:26px 0}
-.cat-title{
-  margin:0 0 10px; font-size:20px; font-weight:800; color:var(--ink);
-  position:relative; display:inline-block; padding-bottom:6px;
-}
-.cat-title::after{
-  content:""; position:absolute; left:0; bottom:-2px; width:120px; height:4px;
-  background: linear-gradient(90deg, var(--teal), var(--rose), var(--peach));
-  border-radius:3px; box-shadow:0 2px 10px color-mix(in oklab, var(--peach) 35%, transparent);
-}
-.cat .grid{ margin-top:8px; }
-.cat + .cat{ border-top:1px solid #ffffff1c; padding-top:22px; }
-
-</style>
-</head>
-<body>
-  <div class="container">
-    <h1>My Engineering Portfolio</h1>
-    <p class="lead">Hi, I’m <strong>Rayfa Chaabane</strong> Electrical Engineer with a background in Industrial Automation and Industrial Computing. 
-      My accomplishments include automation, programming, electrical and mechanical design, and implementing advanced solutions in electronics and 
-robotics </p>
- <p class="lead">Welcom to my Portfilio, where I showcase my code projects, 3D CAD Models, and PCB Designs.</p>
-    <h2 class="section-title">Projects</h2>
-
-    <div class="grid">
-      
-<!-- KICAD PROJECTS -->
-<section class="cat">
-  <h3 class="cat-title">KiCad Projects</h3>
-  <div class="grid">
-      <!-- CARD 1 -->
-  <div class="card overlay">
-      <a class="stretched" href="Pages/Sensor_Adapter/Index.html" aria-label="Open BioSensor Adapter overview"></a>
-       <div class="cover" style="background-image:url('files/SensorAdapter3D.png');"></div>
-  <div class="shade"></div>
-  <div class="on-image">
-          <h3 class="title">BioSensor Adapter</h3>
-          <p class="desc">Removable Biosensor adapter with custom edge connector.</p>
-        </div>
-  </div>
-      <!-- CARD 2 -->
-     <div class="card overlay">
-      <a class="stretched" href="Pages/DC DummyCell/index.html" aria-label="Open DC DummyCell overview"></a>
-       <div class="cover" style="background-image:url('files/DC_DummyCell.png');"></div>
-  <div class="shade"></div>
-  <div class="on-image">
-          <h3 class="title">DC DummyCell</h3>
-          <p class="desc">Fixture PCB for electrical testing of Biosensors.</p>
-        </div>
-  </div>
-          <!-- CARD 3 -->
-  <div class="card overlay">
-      <a class="stretched" href="Pages/DummySensor/index.html" aria-label="Open DummySensor overview"></a>
-       <div class="cover" style="background-image:url('Pages/DummySensor/img1.png');"></div>
-  <div class="shade"></div>
-  <div class="on-image">
-          <h3 class="title">DummySensor</h3>
-          <p class="desc">Flexible PCB.</p>
-        </div>
-  </div>
-      </div>
-</section>
-      
-<!-- SOLIDWORKS / 3D CAD -->
-<section class="cat">
-  <h3 class="cat-title">SolidWorks / 3D CAD</h3>
-  <div class="grid">
-         <div class="card overlay">
-      <a class="stretched" href="Pages/Sensor_Adapter/Index.html" aria-label="Open BioSensor Adapter overview"></a>
-       <div class="cover" style="background-image:url('files/Sensor_Adapter_3D_Model.png');"></div>
-  <div class="shade"></div>
-   <div class="on-image">
-          <h3 class="title">3D CAD – Project 1</h3>
-          <p class="desc">SolidWorks assembly with printable fixtures for lab use.</p>
-        </div> 
-         </div>
-      </div>
-</section> 
-
-<section class="cat">
-  <h3 class="cat-title">Coding Projects</h3>
-  <div class="grid">
-    <!-- future cards -->
-  </div>
-</section>
-
-    </div>
-  </div>
-</body>
-</html>
+  /* ===== Section headings ===== */
+  .section-title{margin:18px 0 8px; font-size:22px;}
+  .cat{margin:20px 0}
+  .cat-title{
+    margin:0 0 8px; font-size:19px; font-weight:800; color:var(--ink);
+    position:relative; display:inline-block; padding-bottom:6px;
+  }
+  .cat-title::after{
+    content:""; position:absolute; left:0; bottom:-2px; width:1
