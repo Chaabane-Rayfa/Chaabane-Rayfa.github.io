@@ -156,6 +156,60 @@
   @media (min-width: 1400px){
     .grid{ grid-template-columns: repeat(4, minmax(230px, 1fr)); }
   }
+  /* 1) نعكس عرض الأعمدة: يسار واسع / يمين ضيّق */
+.container{
+  grid-template-columns: 1fr minmax(260px, 420px);
+  column-gap: 40px;
+}
+
+/* 2) اسم + صورة في نفس السطر، مصفوفين على اليمين */
+.hero-left{
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  text-align: right;
+}
+.profile-pic{
+  width:108px; height:108px;   /* أصغر شوية باش يركب مع الاسم */
+  margin: 0;
+}
+.brand-name{
+  margin: 0;
+  line-height: .95;
+  font-size: clamp(34px, 4.8vw, 56px);  /* أصغر باش ما يكسرش السطر */
+}
+
+/* 3) My Engineering Portfolio على اليسار، في سطر واحد، والنصّ أوسع */
+.hero-right{
+  grid-column: 1;
+  justify-self: start;
+  max-width: 760px;            /* نحلّ عرض النص */
+}
+.hero-title{
+  white-space: nowrap;         /* ما تتقسّمش */
+  font-size: clamp(26px, 2.4vw + 10px, 36px);
+  margin-top: 4px;
+}
+.lead{ max-width: none; }      /* نخلي البراغراف ياخذ عرض الكولون */
+
+/* 4) Projects تحت الاسم (يمين) وبمسافة بسيطة */
+.section-title, .cat{
+  grid-column: 2;
+}
+.section-title{ margin: 14px 0 8px; }
+.cat{ margin: 12px 0; }
+
+/* موبايل: نرجع ترتيب عادي ونسمح للعنوان يلفّ */
+@media (max-width: 900px){
+  .container{ display:block; }
+  .hero{ display:block; }
+  .hero-left{ justify-content: flex-start; text-align: left; }
+  .brand-name{ font-size: 42px; }
+  .hero-title{ white-space: normal; }
+}
+
 </style>
 </head>
 <body>
