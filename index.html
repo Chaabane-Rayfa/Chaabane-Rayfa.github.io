@@ -72,7 +72,7 @@ body{
 /* ===== Left column: العنوان والوصف والبروجيه ===== */
 .hero-right{ grid-column: 1; }
 .hero-title{
-  margin: 0 0 6px;                   /* ↓ قريب للسطر الأول */
+  margin: 0 0 8px;                   /* ↓ قريب للسطر الأول */
   font-size: clamp(26px, 3vw, 40px);
   font-weight:800;
   position:relative; padding-left:26px;
@@ -86,14 +86,15 @@ body{
 .lead{ margin:0 0 10px; color:var(--muted); }
 
 /* ===== Sections & Cards ===== */
-.section-title{ margin: 4px 0 6px; } /* ↑ طلّعنا Projects شوية */
-.cat{ margin: 10px 0; }
-
+.section-title, 
+  .cat{ grid-column: 1; } 
+  .section-title{ margin: 8px 0 8px; } 
+  .cat{ margin: 12px 0; } 
+  .cat:first-of-type{ margin-top: 6px; }
 .grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap:16px;
-  transform: translateY(-6px);       /* ↑ الكروت تطلع شويّة */
+  gap:16px;     /* ↑ الكروت تطلع شويّة */
 }
 
 .card{
