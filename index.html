@@ -57,14 +57,7 @@ body{
   position: relative;
   padding-left: 26px;
 }
-.hero-title::before{
-  content:"";
-  position:absolute;
-  left:0; top:50%; transform:translateY(-50%);
-  width:14px; height:14px; border-radius:50%;
-  background: radial-gradient(circle at 30% 30%, var(--peach), var(--rose));
-  box-shadow:0 0 18px color-mix(in oklab, var(--peach) 50%, transparent);
-}
+
 .lead{ margin:0 0 10px; color:var(--muted); }
 
 /* يمين */
@@ -98,7 +91,8 @@ body{
 .brand-name .last { font-weight:800; }
 
 /* ===== Sections & Cards (كيف ما كانوا) ===== */
-.section-title,.cat{ grid-column: 1; }
+.section-title,
+  .cat{ grid-column: 1; }
 .section-title{ margin: 8px 0 8px; }
 .cat{ margin: 12px 0; }
 .grid{
