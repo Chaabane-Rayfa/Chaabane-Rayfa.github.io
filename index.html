@@ -1,102 +1,207 @@
 <!doctype html>
-<h3>DC DummyCell</h3>
-<p>Fixture PCB for electrical testing of biosensors.</p>
-</div>
-<div class="tags">
-<span class="tag">PCB</span><span class="tag">Testing</span><span class="tag">Lab</span>
-</div>
-</article>
-<!-- Card 3 -->
-<article class="card">
-<img class="cover" src="Pages/DummySensor/img1.png" alt="DummySensor"/>
-<div class="glass">
-<h3>DummySensor</h3>
-<p>Flexible PCB for experiments and Quick IO validation.</p>
-</div>
-<div class="tags">
-<span class="tag">Flex</span><span class="tag">Prototype</span>
-</div>
-</article>
-</div>
-</section>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Rayfa • Portfolio</title>
 
+<!-- ألوان بنفس ستيل soumyajit -->
+<style>
+  :root{
+    --bg:#0b1531;        /* خلفية عامة */
+    --bg-2:#0d1a3d;
+    --text:#e9eef6;      /* نص */
+    --muted:#9fb1c9;     /* نص ثانوي */
+    --brand:#6ee7ff;     /* سماوي */
+    --brand-2:#ff8ab5;   /* وردي */
+    --card:#0f1b34cc;    /* زجاجي */
+    --ring:rgba(110,231,255,.4);
+  }
+  @media (prefers-color-scheme: light){
+    :root{ --bg:#f6f9ff; --bg-2:#e8eefc; --text:#0f162b; --muted:#4a5770; --card:#ffffffcc; --ring:rgba(33,150,243,.25); }
+  }
 
-<!-- SKILLS -->
-<section id="skills">
-<div class="section-head">
-<h2 class="h2">Skills</h2>
-<div class="underline"></div>
-</div>
-<div class="skills">
-<span class="pill">KiCad</span>
-<span class="pill">SolidWorks</span>
-<span class="pill">C/C++</span>
-<span class="pill">Python</span>
-<span class="pill">Automation</span>
-<span class="pill">Robotics</span>
-<span class="pill">Test Stands</span>
-</div>
-</section>
+  /* Base */
+  *{ box-sizing:border-box }
+  html{ scroll-behavior:smooth; scroll-padding-top: 76px; } /* باش الanchors ما يختفوش تحت الnavbar */
+  body{
+    margin:0; color:var(--text);
+    font:16px/1.6 system-ui, Segoe UI, Inter, Roboto, Helvetica, Arial, sans-serif;
+    background:
+      radial-gradient(900px 520px at 20% -10%, color-mix(in oklab, var(--brand) 28%, transparent), transparent 70%),
+      radial-gradient(720px 420px at 80% -18%, color-mix(in oklab, var(--brand-2) 22%, transparent), transparent 72%),
+      linear-gradient(160deg, var(--bg), var(--bg-2));
+  }
+  a{ color:inherit; text-decoration:none }
 
+  .container{ max-width:1200px; margin:0 auto; padding:0 20px; }
 
-<!-- TIMELINE / ABOUT -->
-<section id="about">
-<div class="section-head">
-<h2 class="h2">About & Timeline</h2>
-<div class="underline"></div>
-</div>
-<div class="timeline">
-<div class="tl-item"><h4>2025 — Thesis</h4><p>Integrated mechanical + electronic test stand for in vitro biosensor testing.</p></div>
-<div class="tl-item"><h4>2024 — Flex PCB connector</h4><p>Right‑angle pins on flex; reliable plug‑in to main board.</p></div>
-<div class="tl-item"><h4>2023 — Automation projects</h4><p>Robotic handling, fixtures, and embedded control.</p></div>
-</div>
-</section>
+  /* ===== NAVBAR ثابت ببلور ===== */
+  .topbar{
+    position:sticky; top:0; z-index:1000;
+    backdrop-filter: blur(10px) saturate(1.1);
+    background: linear-gradient(180deg, rgba(15,27,52,.55), rgba(15,27,52,.20));
+    border-bottom:1px solid #ffffff1a;
+    transition: background .25s ease, box-shadow .25s ease;
+  }
+  .topbar.scrolled{
+    background: linear-gradient(180deg, rgba(15,27,52,.78), rgba(15,27,52,.42));
+    box-shadow: 0 10px 30px rgba(0,0,0,.25);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+    padding:12px 0;
+  }
 
+  /* يسار: صورة صغيرة + اسم */
+  .brand{
+    display:flex; align-items:center; gap:12px; min-width:0;
+  }
+  .avatar{ width:44px; height:44px; border-radius:50%; overflow:hidden; border:2px solid var(--brand-2); box-shadow:0 6px 18px rgba(0,0,0,.25); flex:0 0 auto; }
+  .avatar img{ width:100%; height:100%; object-fit:cover }
+  .who{
+    display:flex; flex-direction:column; line-height:1.15; min-width:0;
+  }
+  .name{ font-weight:900; letter-spacing:.2px; background:linear-gradient(180deg,#fff, color-mix(in oklab, #fff 70%, var(--brand-2) 50%));
+         -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .role{ font-size:12px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 
-<!-- CONTACT -->
-<section id="contact">
-<div class="section-head">
-<h2 class="h2">Contact</h2>
-<div class="underline"></div>
-</div>
-<div class="contact">
-<div class="card form">
-<form onsubmit="event.preventDefault(); alert('Thanks! I will get back to you.'); this.reset();">
-<div style="display:grid; gap:10px">
-<input required placeholder="Your name" />
-<input type="email" required placeholder="Your email" />
-<textarea required placeholder="Message"></textarea>
-<button class="cta send" type="submit">Send Message</button>
-</div>
-</form>
-</div>
-<div class="card form">
-<h3 style="margin-top:0">Let’s build something</h3>
-<p class="lead">Open to collaborations on automated test stands, robotics, and PCB fixtures. Based in EU, remote-friendly.</p>
-<p class="lead">Email: <a href="mailto:hello@example.com">hello@example.com</a></p>
-</div>
-</div>
-</section>
-</main>
+  /* يمين: روابط */
+  .nav{
+    display:flex; align-items:center; gap:6px; flex-wrap:wrap;
+  }
+  .nav a{
+    padding:8px 12px; border-radius:10px; font-weight:700; opacity:.9;
+  }
+  .nav a:hover{ background:#ffffff12; }
+  .nav a.active{
+    background:linear-gradient(90deg, #ffffff18, #ffffff08);
+    outline:2px solid #ffffff18;
+  }
 
+  /* ===== Sections (فارغين مؤقتًا) ===== */
+  section{ min-height:85vh; display:flex; align-items:center; justify-content:center; text-align:center; }
+  .section-inner{ max-width: 920px; padding: 40px 0; }
+  h1,h2{ margin:0 0 10px }
+  .muted{ color:var(--muted) }
 
-<footer>
-<div class="container">© <span id="y"></span> Rayfa • Made with HTML/CSS/JS</div>
-</footer>
+  /* Footer صغير */
+  footer{ text-align:center; color:var(--muted); padding:26px 0 40px }
 
+  /* Responsive */
+  @media (max-width: 800px){
+    .who{ display:none; }             /* في الموبايل نخلي الصورة برك لتقصير البار */
+    .nav { gap:4px }
+    .nav a{ padding:8px 10px }
+    html{ scroll-padding-top: 64px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ===== ثابت ديما ===== -->
+  <header class="topbar" id="topbar">
+    <div class="container nav-row">
+      <!-- يسار: صورة + اسم -->
+      <div class="brand">
+        <div class="avatar"><img src="files/profile.png" alt="Rayfa"></div>
+        <div class="who">
+          <div class="name">Rayfa Chaabane</div>
+          <div class="role">Electrical / Automation Engineer</div>
+        </div>
+      </div>
+      <!-- يمين: روابط -->
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link active" href="#home">Home</a>
+        <a class="nav-link" href="#about">About Me</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#resume">Resume</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== أقسام (فارغة توّة، باش تعمّرهم أنت بعد) ===== -->
+  <main>
+    <section id="home">
+      <div class="section-inner">
+        <h1>Home</h1>
+        <p class="muted">Section content will go here later.</p>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-inner">
+        <h2>About Me</h2>
+        <p class="muted">Tell your story here…</p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-inner">
+        <h2>Projects</h2>
+        <p class="muted">Cards/grid will go here…</p>
+      </div>
+    </section>
+
+    <section id="resume">
+      <div class="section-inner">
+        <h2>Resume</h2>
+        <p class="muted">Link or embedded PDF later…</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-inner">
+        <h2>Contact</h2>
+        <p class="muted">Form or email goes here…</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>© <span id="y"></span> Rayfa</footer>
 
 <script>
-// small niceties
-document.getElementById('y').textContent = new Date().getFullYear()
+  // سنة تلقائية
+  document.getElementById('y').textContent = new Date().getFullYear();
 
+  // تغيّر خلفية الnavbar كي نطيح تحت شوية + هايلايت الرابط النشيط
+  const topbar = document.getElementById('topbar');
+  const links = Array.from(document.querySelectorAll('.nav-link'));
+  const sections = Array.from(document.querySelectorAll('main section'));
 
-// simple reveal on scroll (no library)
-const observer = new IntersectionObserver((entries)=>{
-entries.forEach(e=>{
-if(e.isIntersecting){ e.target.animate([{opacity:0, transform:'translateY(12px)'},{opacity:1, transform:'translateY(0)'}],{duration:600, easing:'cubic-bezier(.22,.8,.26,.99)', fill:'forwards'}); observer.unobserve(e.target); }
-})
-},{threshold:.15})
-document.querySelectorAll('.card,.pill,.tl-item,.underline,.title,.avatar').forEach(el=>observer.observe(el))
+  const setActive = (id) => {
+    links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  };
+
+  // Sticky style on scroll
+  const onScroll = () => {
+    if (window.scrollY > 8) topbar.classList.add('scrolled');
+    else topbar.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
+  // Active link by IntersectionObserver
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '0px 0px -60% 0px', threshold: 0.3 });
+  sections.forEach(s => io.observe(s));
+
+  // Smooth scroll + منع “قفزة” قوية (اختياري لأننا عاملين CSS smooth)
+  links.forEach(a => {
+    a.addEventListener('click', (ev) => {
+      const href = a.getAttribute('href');
+      if (href.startsWith('#')) {
+        ev.preventDefault();
+        document.querySelector(href)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', href);
+      }
+    });
+  });
 </script>
+
 </body>
 </html>
