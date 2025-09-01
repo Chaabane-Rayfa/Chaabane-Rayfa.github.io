@@ -3,139 +3,182 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Rayfa • Portfolio</title>
+<title>Rayfa Chaabane • Portfolio</title>
+
+<!-- لو CSS متاعك اسمو style.css وفي نفس المستوى بدّل المسار هنا -->
+<link rel="stylesheet" href="Source/style.css" />
+
 <style>
-  /* ===== Colors (soumyajit vibes) ===== */
-  :root{
-    --bg:#0b1531; --bg2:#0d1a3d;
-    --txt:#e9eef6; --muted:#9fb1c9;
-    --cyan:#6ee7ff; --pink:#ff8ab5;
-  }
+  /* صغار إضافات باش الnav يتهندل في الموبايل من غير Bootstrap */
+  .container{max-width:1200px;margin:0 auto;padding:0 20px}
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .navbar-nav{display:flex;align-items:center;gap:6px;margin:0;padding:0;list-style:none}
+  .navbar-nav .nav-item a{display:inline-block}
 
-  /* ===== Base ===== */
-  *{ box-sizing:border-box }
-  html{ scroll-behavior:smooth; scroll-padding-top:76px; }
-  body{
-    margin:0; color:var(--txt);
-    font:16px/1.6 system-ui, Segoe UI, Inter, Roboto, Helvetica, Arial, sans-serif;
-    background:
-      radial-gradient(900px 520px at 20% -10%, color-mix(in oklab, var(--cyan) 28%, transparent), transparent 70%),
-      radial-gradient(720px 420px at 80% -18%, color-mix(in oklab, var(--pink) 22%, transparent), transparent 72%),
-      linear-gradient(160deg, var(--bg), var(--bg2));
-  }
-  a{ color:inherit; text-decoration:none }
-  .container{ max-width:1200px; margin:0 auto; padding:0 20px; }
-
-  /* ===== Top bar (sticky + blur) ===== */
-  .topbar{
-    position:sticky; top:0; z-index:1000;
-    backdrop-filter: blur(10px) saturate(1.1);
-    background: linear-gradient(180deg, rgba(15,27,52,.55), rgba(15,27,52,.20));
-    border-bottom:1px solid #ffffff1a;
-    transition: background .25s ease, box-shadow .25s ease;
-  }
-  .topbar.scrolled{
-    background: linear-gradient(180deg, rgba(15,27,52,.78), rgba(15,27,52,.42));
-    box-shadow: 0 10px 30px rgba(0,0,0,.25);
-  }
-  .nav-row{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:12px 0; }
-
-  /* Left: avatar + name */
-  .brand{ display:flex; align-items:center; gap:12px; min-width:0; }
-  .avatar{ width:44px; height:44px; border-radius:50%; overflow:hidden; border:2px solid var(--pink); box-shadow:0 6px 18px rgba(0,0,0,.25); }
-  .avatar img{ width:100%; height:100%; object-fit:cover; }
-  .who{ display:flex; flex-direction:column; line-height:1.15; min-width:0; }
-  .name{
-    font-weight:900; letter-spacing:.2px; line-height:1.1;
-    background:linear-gradient(180deg,#fff, color-mix(in oklab, #fff 70%, var(--pink) 50%));
-    -webkit-background-clip:text; background-clip:text; color:transparent;
-  }
-  .role{ font-size:12px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-
-  /* Right: nav links */
-  .nav{ display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
-  .nav a{ padding:8px 12px; border-radius:10px; font-weight:700; opacity:.92; }
-  .nav a:hover{ background:#ffffff12; }
-  .nav a.active{ background:linear-gradient(90deg, #ffffff18, #ffffff08); outline:2px solid #ffffff18; }
-
-  /* ===== Sections (empty placeholders) ===== */
-  section{ min-height:85vh; display:flex; align-items:center; justify-content:center; text-align:center; }
-  .section-inner{ max-width: 920px; padding: 40px 0; }
-  h1,h2{ margin:0 0 10px }
-  .muted{ color:var(--muted) }
-
-  /* Footer */
-  footer{ text-align:center; color:var(--muted); padding:26px 0 40px }
-
-  /* Mobile */
-  @media (max-width: 800px){
-    .who{ display:none; }  /* نخلي الصورة فقط باش الشريط يقصّر */
-    .nav a{ padding:8px 10px }
-    html{ scroll-padding-top:64px; }
+  /* موبايل: نطيّح الناف ونستعمل زر البرغر */
+  @media (max-width: 768px){
+    .navbar-nav{display:none;flex-direction:column;align-items:flex-start;background:#181a27;border-radius:12px;padding:8px 10px;margin-top:10px}
+    .navbar-nav.open{display:flex}
   }
 </style>
 </head>
-<body>
 
-  <!-- ===== STICKY TOP BAR ===== -->
-  <header class="topbar" id="topbar">
-    <div class="container nav-row">
-      <!-- left: avatar + name -->
-      <div class="brand">
-        <div class="avatar"><img src="files/profile.png" alt="Rayfa"></div>
-        <div class="who">
-          <div class="name">Rayfa Chaabane</div>
-          <div class="role">Electrical / Automation Engineer</div>
+<!-- نمنع السكرول لين يكمّل preloader -->
+<body id="no-scroll">
+
+<!-- ===== Preloader (استعملت Images/pre.svg) ===== -->
+<div id="preloader" style="background-image:url('Images/pre.svg')"></div>
+
+<!-- ===== NAVBAR (ثابت + blur) ===== -->
+<nav class="navbar sticky-top" id="navbar">
+  <div class="container nav-wrap">
+
+    <!-- يسار: صورة + اسم (الكلاسات تمشي مع CSS متاعك) -->
+    <a class="navbar-brand d-flex align-items-center" href="#home" style="display:flex;align-items:center;gap:10px">
+      <img class="logo" src="files/profile.png" alt="Rayfa" style="border-radius:50%;border:2px solid #c95bf5;object-fit:cover;height:2.2em;width:2.2em" />
+      <span>Rayfa Chaabane</span>
+    </a>
+
+    <!-- زرّ البرغر للموبايل (CSS متاعك مجهّزلو) -->
+    <button class="navbar-toggler collapsed" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- يمين: روابط -->
+    <ul class="navbar-nav" id="navMenu">
+      <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+      <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+      <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
+      <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+    </ul>
+
+  </div>
+</nav>
+
+<main>
+  <!-- ===== HOME ===== -->
+  <!-- مبدّلت الـbackground-image باش يستعمل Images/home-bg.jpg بدل Assets/home-bg.jpg اللي في CSS -->
+  <section id="home" class="home-section" style="background-image: var(--image-gradient), url('Images/home-bg.jpg')">
+    <div class="container home-content">
+      <h1 class="heading">Hello There! <span class="wave" aria-hidden="true">👋</span></h1>
+      <h2 class="heading-name">I’m <span class="main-name">Rayfa Chaabane</span></h2>
+      <p class="Typewriter__wrapper">Electrical / Automation Engineer</p>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section id="about" class="about-section">
+    <div class="container">
+      <h2 class="project-heading">About Me</h2>
+      <div class="home-about-description">
+        <p class="home-about-body">
+          Electrical Engineer with a background in Industrial Automation and Industrial Computing.
+          My accomplishments include automation, programming, electrical and mechanical design, 
+          and implementing advanced solutions in electronics and robotics
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section id="projects" class="project-section">
+    <div class="container">
+      <h2 class="project-heading">Projects</h2>
+
+      <!-- كروت فراغ، تبعدهم بعدين -->
+      <div class="project-card">
+        <div class="project-card-view">
+          <img class="card-img-top" src="files/SensorAdapter3D.png" alt="Project 1" />
+          <div style="padding:0 20px 20px">
+            <h3>BioSensor Adapter</h3>
+            <p>Removable adapter with custom edge connector.</p>
+            <a class="btn btn-primary" href="#">Details</a>
+          </div>
         </div>
       </div>
-      <!-- right: links -->
-      <nav class="nav" aria-label="Primary">
-        <a class="nav-link active" href="#home">Home</a>
-        <a class="nav-link" href="#about">About</a>
-        <a class="nav-link" href="#projects">Projects</a>
-        <a class="nav-link" href="#resume">Resume</a>
-        <a class="nav-link" href="#contact">Contact</a>
-      </nav>
+
+      <div class="project-card">
+        <div class="project-card-view">
+          <img class="card-img-top" src="files/DC_DummyCell.png" alt="Project 2" />
+          <div style="padding:0 20px 20px">
+            <h3>DC DummyCell</h3>
+            <p>Fixture PCB for biosensor testing.</p>
+            <a class="btn btn-primary" href="#">Details</a>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </header>
+  </section>
 
-  <!-- ===== PAGE SECTIONS (فاضين توّة) ===== -->
-  <main>
-    <section id="home"><div class="section-inner"><h1>Home</h1><p class="muted">Content later…</p></div></section>
-    <section id="about"><div class="section-inner"><h2>About</h2><p class="muted">About me…</p></div></section>
-    <section id="projects"><div class="section-inner"><h2>Projects</h2><p class="muted">Grid/cards later…</p></div></section>
-    <section id="resume"><div class="section-inner"><h2>Resume</h2><p class="muted">Link to CV…</p></div></section>
-    <section id="contact"><div class="section-inner"><h2>Contact</h2><p class="muted">Email / form…</p></div></section>
-  </main>
+  <!-- ===== RESUME ===== -->
+  <section id="resume" class="resume-section">
+    <div class="container">
+      <h2 class="project-heading">Resume</h2>
+      <p class="home-about-social">Add a link to your PDF CV here:</p>
+      <p><a class="btn btn-primary" href="files/Rayfa_Chaabane Resume.pdf">Download CV</a></p>
+    </div>
+  </section>
 
-  <footer>© <span id="y"></span> Rayfa</footer>
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="about-section">
+    <div class="container">
+      <h2 class="project-heading">Contact</h2>
+      <p class="home-about-social">Email: <a class="purple" href="rayfa.chaabane@esprit.tn">hello@example.com</a></p>
+    </div>
+  </section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-copywright"><h3>© <span id="y"></span> Rayfa — All rights reserved.</h3></div>
+  </div>
+</footer>
+
+<!-- عنصر خلفية (اختياري حسب CSS) -->
+<div id="tsparticles" aria-hidden="true"></div>
 
 <script>
-  // آخر السنة
+  // سنة تلقائية
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  // غمّق الشريط وقت السكروول + فعّل اللينك المناسب
-  const topbar = document.getElementById('topbar');
-  const links  = Array.from(document.querySelectorAll('.nav-link'));
-  const secs   = Array.from(document.querySelectorAll('main section'));
+  // Preloader: نحيه وقت تتحمّل الصفحة ونفعّل السكرول
+  window.addEventListener('load', () => {
+    document.getElementById('preloader').style.display = 'none';
+    document.body.removeAttribute('id'); // كان id="no-scroll"
+  });
 
-  function onScroll(){
-    if (window.scrollY > 8) topbar.classList.add('scrolled'); else topbar.classList.remove('scrolled');
-  }
-  window.addEventListener('scroll', onScroll); onScroll();
+  // Sticky navbar (يزيد class .sticky كي نطيح)
+  const nav = document.getElementById('navbar');
+  const onScroll = () => {
+    if (window.scrollY > 20) nav.classList.add('sticky'); else nav.classList.remove('sticky');
+  };
+  onScroll(); window.addEventListener('scroll', onScroll);
 
-  // بدّل active حسب القسم الظاهر
+  // Burger toggle في الموبايل
+  const navToggle = document.getElementById('navToggle');
+  const navMenu   = document.getElementById('navMenu');
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('collapsed');
+    navMenu.classList.toggle('open');
+  });
+
+  // فعل اللينك المناسب حسب القسم الظاهر
+  const links = Array.from(document.querySelectorAll('.nav-link'));
+  const secs  = Array.from(document.querySelectorAll('main section'));
   const io = new IntersectionObserver((entries)=>{
     entries.forEach(e=>{
       if(e.isIntersecting){
         const id = '#' + e.target.id;
-        links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+        links.forEach(a => a.classList.toggle('active', a.getAttribute('href')===id));
       }
     });
-  }, { rootMargin:'0px 0px -60% 0px', threshold:0.3 });
+  }, { rootMargin:'0px 0px -60% 0px', threshold:.3 });
   secs.forEach(s => io.observe(s));
 
-  // Smooth scroll (اختياري لأنو عاملين smooth بالCSS)
+  // Smooth scroll (للتأكيد)
   links.forEach(a=>{
     a.addEventListener('click', (ev)=>{
       const h = a.getAttribute('href');
@@ -143,10 +186,11 @@
         ev.preventDefault();
         document.querySelector(h)?.scrollIntoView({behavior:'smooth', block:'start'});
         history.replaceState(null, '', h);
+        // اغلق القائمة في الموبايل بعد الكليك
+        navMenu.classList.remove('open'); navToggle.classList.add('collapsed');
       }
     });
   });
 </script>
-
 </body>
 </html>
