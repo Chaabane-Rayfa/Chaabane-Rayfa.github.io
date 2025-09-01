@@ -20,7 +20,7 @@
 *{ box-sizing:border-box }
 body{
   margin:0;
-  padding:20px 10px;                 /* ↓ نقصت شوية من فوق باش الكل يطلع */
+  padding:20px 10px;
   font:16px/1.6 system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
   color:var(--ink);
   background:
@@ -32,79 +32,81 @@ body{
   background-attachment: fixed;
 }
 
-/* ===== Page Grid: يسار المحتوى / يمين الصورة+الاسم ===== */
+/* ===== Container ===== */
 .container{
   max-width: clamp(1100px, 92vw, 1320px);
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr minmax(200px, 420px);
-  column-gap: 30px;
-  align-items: start;
+  padding: 0 10px;
 }
-.hero{ display: contents; }
 
-/* ===== Right column: الصورة ثم الاسم تحتها مباشرة ===== */
+/* ===== HERO: title left  |  photo+name right ===== */
+.hero-row{
+  display:flex;                     /* عناصر جنب بعض */
+  align-items:center;               /* نفس المستوى عموديًا */
+  justify-content:space-between;    /* يبعد اليسار عن اليمين */
+  gap: 28px;
+  margin-bottom: 28px;
+}
 
+/* يسار */
+.hero-left{ flex: 1 1 600px; min-width: 420px; }
+.hero-title{
+  margin: 0 0 8px;
+  font-size: clamp(26px, 3vw, 40px);
+  font-weight:800;
+  position: relative;
+  padding-left: 26px;
+}
+.hero-title::before{
+  content:"";
+  position:absolute;
+  left:0; top:50%; transform:translateY(-50%);
+  width:14px; height:14px; border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, var(--peach), var(--rose));
+  box-shadow:0 0 18px color-mix(in oklab, var(--peach) 50%, transparent);
+}
+.lead{ margin:0 0 10px; color:var(--muted); }
+
+/* يمين */
+.hero-right{
+  flex: 0 0 auto;
+  display:flex;
+  flex-direction:column;            /* الصورة فوق، الاسم تحت */
+  align-items:center;
+  gap:10px;
+}
 .profile-pic{
   width:118px; height:118px;
   border-radius:50%; overflow:hidden;
   border:3px solid var(--peach);
   box-shadow:0 6px 18px rgba(0,0,0,.25);
 }
-.profile-pic img{
-  width:100%; height:100%; object-fit:cover;
-}
+.profile-pic img{ width:100%; height:100%; object-fit:cover; }
+
+/* الاسم: name + last name جنب بعض */
 .brand-name{
-  margin:0;                          /* يجي لازق تحت الصورة */
+  margin:0;
   font-size: clamp(30px, 5vw, 60px);
   font-weight:900; line-height:.95; letter-spacing:.2px;
+  display:flex;                     /* يخليهم side-to-side */
+  gap: 12px;
   background: linear-gradient(180deg, #fff, color-mix(in oklab, #fff 70%, var(--peach) 50%));
   -webkit-background-clip:text; background-clip:text; color:transparent;
   text-shadow: 0 6px 24px #00000030;
 }
+.brand-name .first{ font-weight:900; }
+.brand-name .last { font-weight:800; }
 
-/* ===== Left column: العنوان والوصف والبروجيه ===== */
-.hero-row{
-  display: flex;                  /* يخلي العناصر جنب بعض */
-  justify-content: space-between; /* العنوان يسار، الصورة يمين */
-  align-items: center;            /* يوسّطهم عموديًا في نفس الخط */
-  margin-bottom: 24px;            /* مسافة لتحت */
-}
-
-.hero-title-wrap{
-  flex:1;                         /* ياخذ الباقي من العرض */
-}
-.hero-title{
-  margin: 0 0 8px;                   /* ↓ قريب للسطر الأول */
-  font-size: clamp(26px, 3vw, 40px);
-  font-weight:800;
-  position: relative; 
-  padding-left:26px;
-  
-.hero-title::before{
-  content:"";
-  position:absolute;
-  left:0; top:50%; transform:translateY(-50%);
-  width:14px; height:14px;
-  border-radius:50%;
-  background: radial-gradient(circle at 30% 30%, var(--peach), var(--rose));
-  box-shadow:0 0 18px color-mix(in oklab, var(--peach) 50%, transparent);
-}
-.lead{ margin:0 0 10px; color:var(--muted); }
-
-/* ===== Sections & Cards ===== */
-.section-title, 
-  .cat{ grid-column: 1; } 
-  .section-title{ margin: 8px 0 8px; } 
-  .cat{ margin: 12px 0; } 
-  .cat:first-of-type{ margin-top: 6px; }
+/* ===== Sections & Cards (كيف ما كانوا) ===== */
+.section-title,.cat{ grid-column: 1; }
+.section-title{ margin: 8px 0 8px; }
+.cat{ margin: 12px 0; }
 .grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap:16px; 
-  transform: translateY(-6px);/* ↑ الكروت تطلع شويّة */
+  gap:16px;
+  transform: translateY(-6px);
 }
-
 .card{
   display:block;
   background:linear-gradient(180deg, color-mix(in oklab, var(--card) 90%, #1a2a52 10%), var(--card));
@@ -124,24 +126,13 @@ body{
 .title{ font-weight:800; font-size:16.5px; margin:0 0 4px; }
 .desc{ margin:0 0 10px; color:var(--muted); font-size:13px; }
 
-/* ===== Section underline ===== */
-.cat-title{
-  margin:0 0 8px; font-size:19px; font-weight:800; color:var(--ink);
-  position:relative; display:inline-block; padding-bottom:6px;
-}
-.cat-title::after{
-  content:""; position:absolute; left:0; bottom:-2px; width:120px; height:4px;
-  background: linear-gradient(90deg, var(--teal), var(--rose), var(--peach));
-  border-radius:3px; box-shadow:0 2px 10px color-mix(in oklab, var(--peach) 35%, transparent);
-}
-
 /* ===== Responsive ===== */
 @media (max-width: 900px){
-  .container{ display:block; }
-  .hero{ display:block; }
-  .hero-left{ align-items:center; }
-  .brand-name{ font-size:42px; }
+  .hero-row{ flex-direction:column; align-items:flex-start; }
+  .hero-right{ align-items:flex-start; }
+  .brand-name{ gap:8px; }
 }
+
 
 
 </style>
@@ -150,21 +141,29 @@ body{
   <div class="container">
 
     <!-- ===== HERO ===== -->
-    <header class="hero">
-   <div class="container hero-row">
-  <div class="hero-title-wrap">
-        <h2 class="hero-title">My Engineering Portfolio</h2>
-        <p class="lead">Hi, I’m <strong>Rayfa Chaabane</strong> Electrical Engineer with a background in Industrial Automation and Industrial Computing. 
-          My accomplishments include automation, programming, electrical and mechanical design, and implementing advanced solutions in electronics and robotics.</p>
-        <p class="lead dim">Welcome to my Portfolio, where I showcase my code projects, 3D CAD Models, and PCB Designs.</p>
-       </div>
-        <div class="profile-pic">
-          <img src="files/profile.png" alt="Rayfa Chaabane" />
-        </div>
-        <h1 class="brand-name">Rayfa Chaabane</h1>
-      </div>
- 
-    </header>
+  <header class="hero-row">
+  <!-- يسار: العنوان + الباراغرافات -->
+  <div class="hero-left">
+    <h2 class="hero-title">My Engineering Portfolio</h2>
+    <p class="lead">
+      Hi, I’m <strong>Rayfa Chaabane</strong> Electrical Engineer with a background in Industrial Automation and Industrial Computing.
+      My accomplishments include automation, programming, electrical and mechanical design, and implementing advanced solutions in electronics and robotics.
+    </p>
+    <p class="lead dim">Welcome to my Portfolio, where I showcase my code projects, 3D CAD Models, and PCB Designs.</p>
+  </div>
+
+  <!-- يمين: الصورة + الاسم جنب بعض (الاسم تحت الصورة) -->
+  <div class="hero-right">
+    <div class="profile-pic">
+      <img src="files/profile.png" alt="Rayfa Chaabane" />
+    </div>
+    <h1 class="brand-name">
+      <span class="first">Rayfa</span>
+      <span class="last">Chaabane</span>
+    </h1>
+  </div>
+</header>
+
 
     <h2 class="section-title">Projects</h2>
 
