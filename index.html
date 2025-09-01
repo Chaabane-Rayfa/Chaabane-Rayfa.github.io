@@ -20,7 +20,7 @@
 *{ box-sizing:border-box }
 body{
   margin:0;
-  padding:28px 20px;                 /* ↓ نقصت شوية من فوق باش الكل يطلع */
+  padding:20px 10px;                 /* ↓ نقصت شوية من فوق باش الكل يطلع */
   font:16px/1.6 system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
   color:var(--ink);
   background:
@@ -37,32 +37,26 @@ body{
   max-width: clamp(1100px, 92vw, 1320px);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr minmax(260px, 420px);
-  column-gap: 36px;
+  grid-template-columns: 1fr minmax(200px, 420px);
+  column-gap: 30px;
   align-items: start;
 }
 .hero{ display: contents; }
 
 /* ===== Right column: الصورة ثم الاسم تحتها مباشرة ===== */
-.hero-left{
-  grid-column: 2;
-  display:flex;
-  flex-direction:column;             /* الصورة فوق، الاسم تحت */
-  align-items:center;                /* تصفيط بالوسط */
-  gap:10px;
-  text-align:center;
-}
+
 .profile-pic{
   width:118px; height:118px;
-  border-radius:50%;
-  overflow:hidden;
+  border-radius:50%; overflow:hidden;
   border:3px solid var(--peach);
   box-shadow:0 6px 18px rgba(0,0,0,.25);
 }
-.profile-pic img{ width:100%; height:100%; object-fit:cover; }
+.profile-pic img{
+  width:100%; height:100%; object-fit:cover;
+}
 .brand-name{
   margin:0;                          /* يجي لازق تحت الصورة */
-  font-size: clamp(36px, 5vw, 60px);
+  font-size: clamp(30px, 5vw, 60px);
   font-weight:900; line-height:.95; letter-spacing:.2px;
   background: linear-gradient(180deg, #fff, color-mix(in oklab, #fff 70%, var(--peach) 50%));
   -webkit-background-clip:text; background-clip:text; color:transparent;
@@ -70,16 +64,29 @@ body{
 }
 
 /* ===== Left column: العنوان والوصف والبروجيه ===== */
-.hero-right{ grid-column: 1; }
+.hero-row{
+  display: flex;                  /* يخلي العناصر جنب بعض */
+  justify-content: space-between; /* العنوان يسار، الصورة يمين */
+  align-items: center;            /* يوسّطهم عموديًا في نفس الخط */
+  margin-bottom: 24px;            /* مسافة لتحت */
+}
+
+.hero-title-wrap{
+  flex:1;                         /* ياخذ الباقي من العرض */
+}
 .hero-title{
   margin: 0 0 8px;                   /* ↓ قريب للسطر الأول */
   font-size: clamp(26px, 3vw, 40px);
   font-weight:800;
-  position:relative; padding-left:26px;
-}
+  position: relative; 
+  padding-left:26px;
+  
 .hero-title::before{
-  content:""; position:absolute; left:0; top:50%; transform:translateY(-50%);
-  width:14px; height:14px; border-radius:50%;
+  content:"";
+  position:absolute;
+  left:0; top:50%; transform:translateY(-50%);
+  width:14px; height:14px;
+  border-radius:50%;
   background: radial-gradient(circle at 30% 30%, var(--peach), var(--rose));
   box-shadow:0 0 18px color-mix(in oklab, var(--peach) 50%, transparent);
 }
@@ -94,7 +101,8 @@ body{
 .grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap:16px;     /* ↑ الكروت تطلع شويّة */
+  gap:16px; 
+  transform: translateY(-6px);/* ↑ الكروت تطلع شويّة */
 }
 
 .card{
