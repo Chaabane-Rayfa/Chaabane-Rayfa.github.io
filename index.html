@@ -3,26 +3,40 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>My Portfolio </title>
-    <meta name="description" content="Personal developer portfolio: projects, skills, resume, and contact." />
+    <title>My Portfolio</title>
+    <meta
+      name="description"
+      content="Personal developer portfolio: projects, skills, resume, and contact."
+    />
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
     <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-bIh3xqO7kQ2o6uBmx+oNwQ2wYIvv1+c/3/DH7mGQXo8nD5eHfQmS0qJb7T9W2c6kz9S3k9t4YlCcZzYHkTQZow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
+    />
 
-    <!-- AOS (animations on scroll) -->
-    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-
-    <!-- Optional: your own stylesheet (keep class names similar to the React template) -->
-    <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
     <style>
       :root {
@@ -30,84 +44,209 @@
         --card: #161b22;
         --text: #c9d1d9;
         --muted: #8b949e;
-        --accent: #c778dd; /* matches the "purple" accent in the template */
+        --accent: #c778dd;
       }
-      html, body { height: 100%; }
+      html,
       body {
-        font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+        height: 100%;
+      }
+      body {
+        font-family: "Poppins", system-ui, -apple-system, Segoe UI, Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji",
+          "Segoe UI Emoji";
         background: var(--bg);
         color: var(--text);
         scroll-behavior: smooth;
       }
-      .navbar { background: rgba(13,17,23,0.8); backdrop-filter: saturate(180%) blur(10px); }
-      .navbar-brand, .nav-link { color: var(--text) !important; }
-      .nav-link.active, .nav-link:focus, .nav-link:hover { color: var(--accent) !important; }
-      .purple { color: var(--accent) !important; }
 
-      /* Sections */
-      section { padding: 90px 0; }
-      .home-section { padding-top: 120px; min-height: 100vh; display: grid; place-items: center; }
+      .navbar {
+        background: rgba(13, 17, 23, 0.8);
+        backdrop-filter: saturate(180%) blur(10px);
+      }
+      .navbar-brand,
+      .nav-link {
+        color: var(--text) !important;
+      }
+      .nav-link.active,
+      .nav-link:focus,
+      .nav-link:hover {
+        color: var(--accent) !important;
+      }
+      .purple {
+        color: var(--accent) !important;
+      }
 
-      /* Hero */
-      .heading-name { font-size: clamp(32px, 5vw, 52px); font-weight: 700; }
-      .main-name { font-weight: 700; }
-      .hero-subtitle { font-size: clamp(16px, 2.3vw, 20px); color: var(--muted); }
-      .social-icons a { color: var(--text); margin-right: 14px; font-size: 22px; }
-      .social-icons a:hover { color: var(--accent); }
+      section {
+        padding: 90px 0;
+      }
+      .home-section {
+        padding-top: 120px;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+      }
 
-      /* Cards / sections */
-      .card { background: var(--card); border: 1px solid #21262d; color: var(--text); }
-      .section-title { font-weight: 700; font-size: clamp(28px, 3.6vw, 36px); }
-      .section-sub { color: var(--muted); }
+      .heading-name {
+        font-size: clamp(32px, 5vw, 52px);
+        font-weight: 700;
+      }
+      .main-name {
+        font-weight: 700;
+      }
+      .hero-subtitle {
+        font-size: clamp(16px, 2.3vw, 20px);
+        color: var(--muted);
+      }
 
-      /* Projects */
-      .project-card img { border-top-left-radius: .75rem; border-top-right-radius: .75rem; }
-      .tag { display:inline-block; padding:.25rem .5rem; border:1px solid #30363d; border-radius:999px; font-size:.8rem; margin:.1rem .25rem; color: var(--muted); }
+      .social-icons a {
+        color: var(--text);
+        margin-right: 14px;
+        font-size: 22px;
+      }
+      .social-icons a:hover {
+        color: var(--accent);
+      }
 
-      /* Timeline (Resume) */
-      .timeline { position: relative; margin: 2rem 0; padding-left: 1.5rem; }
-      .timeline::before { content: ""; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: #30363d; }
-      .timeline-item { position: relative; margin-bottom: 1.5rem; }
-      .timeline-item::marker { content: ""; }
-      .timeline-dot { position: absolute; left: 0; top: .4rem; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 3px #1f2430; }
+      .card {
+        background: var(--card);
+        border: 1px solid #21262d;
+        color: var(--text);
+      }
+      .section-title {
+        font-weight: 700;
+        font-size: clamp(28px, 3.6vw, 36px);
+      }
+      .section-sub {
+        color: var(--muted);
+      }
 
-      /* Footer */
-      footer { border-top: 1px solid #21262d; padding: 28px 0; color: var(--muted); }
+      .project-card img {
+        border-top-left-radius: 0.75rem;
+        border-top-right-radius: 0.75rem;
+      }
+      .tag {
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        border: 1px solid #30363d;
+        border-radius: 999px;
+        font-size: 0.8rem;
+        margin: 0.1rem 0.25rem;
+        color: var(--muted);
+      }
 
-      /* Utilities */
-      .muted { color: var(--muted); }
+      .timeline {
+        position: relative;
+        margin: 2rem 0;
+        padding-left: 1.5rem;
+      }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 8px;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: #30363d;
+      }
+      .timeline-item {
+        position: relative;
+        margin-bottom: 1.5rem;
+      }
+      .timeline-dot {
+        position: absolute;
+        left: 0;
+        top: 0.4rem;
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 0 3px #1f2430;
+      }
+
+      footer {
+        border-top: 1px solid #21262d;
+        padding: 28px 0;
+        color: var(--muted);
+      }
+
+      .muted {
+        color: var(--muted);
+      }
       .avatar {
         width: clamp(180px, 26vw, 280px);
         border-radius: 24px;
         border: 1px solid #21262d;
-        box-shadow: 0 10px 30px rgba(0,0,0,.35);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
       }
-      /* Grid خفيف بدل Bootstrap */
-.row{ display:flex; flex-wrap:wrap; gap:20px; align-items:center; }
-.col{ flex:1 1 280px; }
-.col-8{ flex: 1 1 600px; }
-.col-4{ flex: 0 1 360px; }
-.img-fluid{ max-width:100%; height:auto; display:block; }
 
+      /* Social list (for ABOUT) */
+      .home-about-social-links {
+        list-style: none;
+        padding-left: 0;
+        margin: 14px 0 0;
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+      .home-about-social-links li a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid #30363d;
+        border-radius: 12px;
+        color: var(--text);
+      }
+      .home-about-social-links li a:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
     </style>
   </head>
 
-  <body data-bs-spy="scroll" data-bs-target="#mainNav" data-bs-offset="80" tabindex="0">
+  <body
+    data-bs-spy="scroll"
+    data-bs-target="#mainNav"
+    data-bs-offset="80"
+    tabindex="0"
+  >
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-expand-lg fixed-top">
       <div class="container">
-        <a class="navbar-brand fw-bold" href="#home"><i class="fa-solid fa-code"></i> <span class="purple">My</span>Portfolio</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"><i class="fa-solid fa-bars" style="color:#fff;"></i></span>
+        <a class="navbar-brand fw-bold" href="#home"
+          ><i class="fa-solid fa-code"></i>
+          <span class="purple">My</span>Portfolio</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+          aria-controls="navMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"
+            ><i class="fa-solid fa-bars" style="color: #fff"></i
+          ></span>
         </button>
         <div class="collapse navbar-collapse" id="navMenu">
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-            <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-            <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#skills">Skills</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#resume">Resume</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -118,130 +257,128 @@
       <div class="container">
         <div class="row align-items-center g-5">
           <div class="col-lg-7" data-aos="fade-up" data-aos-delay="50">
-            <p class="mb-2 muted">Hi there, I'm </p>
-            <h1 class="heading-name">Rayfa <span class="purple main-name">Chaabane</span></h1>
-            <p class="hero-subtitle mt-2">
-              <span id="typewriter"></span>
-            </p>
-            <!-- ===== Intro + Avatar + Socials (داخل HOME) ===== -->
-<div class="home-about-section" id="about">
-  <div class="container">
-    <!-- صف: نصّ على يسار / صورة على يمين -->
-    <div class="row">
-      <div class="col col-8 home-about-description">
-        <h1 style="font-size:2.6em">
-          LET ME <span class="purple"> INTRODUCE </span> MYSELF
-        </h1>
-
-        <p class="home-about-body">
-   As an Electrical Engineer, I specialize in transforming concepts into
-  fully integrated systems — combining
-  <i><b class="purple"> PLC Programming, Control Systems, Robotics, and Industrial Software.</b></i>
-  <br /><br />
-
-  My work spans across
-  <i><b class="purple"> Industrial Automation</b></i>
-  (TIA Portal, SCADA, HMI),
-  <i><b class="purple"> Robotics & Mechatronics</b></i>,
-  <i><b class="purple"> MATLAB & Control Systems</b></i>,
-  <i><b class="purple"> LabVIEW & System Validation</b></i>,
-  and
-  <i><b class="purple"> Mechanical Design & Rapid Prototyping.</b></i>
-  <br /><br />
-
-  I engineer solutions where
-  <i><b class="purple"> Electronics meets Intelligence</b></i>
-  and
-  <i><b class="purple"> Precision meets Performance.</b></i>
-   </p>
-
-      </div>
-
-      <div class="col col-4 myAvtar">
-        <!-- Tilt اختياري: نعطيه data-tilt للسكرِبت لتحت -->
-        <div class="tilt" data-tilt>
-          <!-- بدّل المسار للصورة متاعك -->
-          <img src="Images/avatar.png" class="img-fluid" alt="avatar" />
-        </div>
-      </div>
-    </div>
-
-    <!-- صفّ: روابط سوشال -->
-    <div class="row">
-      <div class="col home-about-social" style="width:100%">
-        <h1>FIND ME ON</h1>
-        <p>Feel free to <span class="purple">connect </span>with me</p>
-
-        <ul class="home-about-social-links">
-          <li class="social-icons">
-            <a class="icon-colour home-social-icons" href="https://github.com/Chaabane-Rayfa" target="_blank" rel="noreferrer" aria-label="GitHub">
-              <!-- أيقونة GitHub SVG صغيرة -->
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
-                <path d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.1-.76.08-.74.08-.74 1.22.09 1.86 1.27 1.86 1.27 1.08 1.85 2.84 1.32 3.54 1.01.11-.79.42-1.32.76-1.62-2.67-.3-5.48-1.34-5.48-5.95 0-1.31.47-2.39 1.25-3.24-.13-.3-.54-1.52.12-3.17 0 0 1.01-.32 3.3 1.24a11.5 11.5 0 0 1 6 0c2.29-1.56 3.3-1.24 3.3-1.24.66 1.65.25 2.87.12 3.17.78.85 1.25 1.93 1.25 3.24 0 4.62-2.81 5.65-5.49 5.95.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.83.58A12 12 0 0 0 12 .5z"/>
-              </svg>
-            </a>
-          </li>
-
-
-          <li class="social-icons">
-            <a class="icon-colour home-social-icons" href="https://www.linkedin.com/in/rayfa-chaabane-b8ab70247/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
-                <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7.5 0h3.8v2.2h.05c.53-1 1.84-2.2 3.8-2.2 4.06 0 4.8 2.67 4.8 6.14V24h-4V15c0-2.15-.04-4.92-3-4.92-3 0-3.46 2.35-3.46 4.77V24h-4V8z"/>
-              </svg>
-            </a>
-          </li>
-
-          <li class="social-icons">
-            <a class="icon-colour home-social-icons" href="https://www.instagram.com/cx.rayy?igsh=MXpvcmdoNXFpbWQ1&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
-                <path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.96.24 2.42.4.61.24 1.05.52 1.51.98.46.46.74.9.98 1.51.16.46.35 1.25.4 2.42.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.96-.4 2.42a4 4 0 0 1-.98 1.51 4 4 0 0 1-1.51.98c-.46.16-1.25.35-2.42.4-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.96-.24-2.42-.4a4 4 0 0 1-1.51-.98 4 4 0 0 1-.98-1.51c-.16-.46-.35-1.25-.4-2.42C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.24-1.96.4-2.42.24-.61.52-1.05.98-1.51.46-.46.9-.74 1.51-.98.46-.16 1.25-.35 2.42-.4C8.42 2.21 8.8 2.2 12 2.2m0-2.2C8.74 0 8.33.02 7.05.08 5.77.14 4.84.35 4.06.65 3.25.96 2.6 1.36 1.95 2.01 1.29 2.67.9 3.33.59 4.14.29 4.92.08 5.85.02 7.13.01 8.41 0 8.82 0 12s.01 3.59.07 4.87c.06 1.28.27 2.21.57 2.99.31.81.7 1.47 1.36 2.12.66.66 1.31 1.05 2.12 1.36.78.3 1.71.51 2.99.57C8.33 24 8.74 24 12 24s3.59-.01 4.87-.07c1.28-.06 2.21-.27 2.99-.57.81-.31 1.47-.7 2.12-1.36.66-.66 1.05-1.31 1.36-2.12.3-.78.51-1.71.57-2.99.06-1.28.07-1.69.07-4.87s-.01-3.59-.07-4.87c-.06-1.28-.27-2.21-.57-2.99C22.1 1.97 21.71 1.31 21.05.66 20.4 0 19.74-.39 18.93-.7 18.15-1 17.22-1.21 15.94-1.27 14.66-1.33 14.26-1.35 12-1.35zM12 5.8A6.2 6.2 0 1 0 18.2 12 6.2 6.2 0 0 0 12 5.8zm0 10.2A4 4 0 1 1 16 12a4 4 0 0 1-4 4zm6.4-10.8a1.45 1.45 0 1 1-1.45-1.45A1.45 1.45 0 0 1 18.4 5.2z"/>
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-  </div>
-</div>
+            <p class="mb-2 muted">Hi there, I'm</p>
+            <h1 class="heading-name">
+              Rayfa <span class="purple main-name">Chaabane</span>
+            </h1>
+            <p class="hero-subtitle mt-2"><span id="typewriter"></span></p>
 
             <div class="social-icons mt-3">
-              <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-              <a href="foushe123@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
-              <a href="#resume" aria-label="Download CV"><i class="fa-solid fa-file-lines"></i></a>
+              <a href="https://github.com/Chaabane-Rayfa" target="_blank" rel="noreferrer" aria-label="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a href="https://www.linkedin.com/in/rayfa-chaabane-b8ab70247/" target="_blank" rel="noreferrer" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="mailto:foushe123@gmail.com" aria-label="Email"
+                ><i class="fa-regular fa-envelope"></i
+              ></a>
+              <a href="#resume" aria-label="Resume"
+                ><i class="fa-solid fa-file-lines"></i
+              ></a>
             </div>
           </div>
+
           <div class="col-lg-5 text-center" data-aos="zoom-in" data-aos-delay="150">
-            <!-- Replace with your real avatar -->
             <img class="avatar" src="Images/Photo.png" alt="Developer avatar" />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- About -->
+    <!-- About (ONLY ONE #about) -->
     <section id="about" class="about-section">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-10" data-aos="fade-up">
             <h2 class="section-title">About <span class="purple">Me</span></h2>
-            <div class="row g-4 align-items-center mt-2">
+            <p class="section-sub">Electrical Engineer • Automation • Mechatronics</p>
+
+            <div class="row g-5 align-items-center mt-2">
               <div class="col-md-7">
-                <p class="mb-2">I am a software developer who loves building web applications with modern technologies. I enjoy crafting delightful UIs and robust backends.</p>
-                <p class="mb-0">Beyond code, I care about performance, accessibility, and clean architecture.</p>
+                <h1 style="font-size: 2.2em; margin-bottom: 0.8rem">
+                  LET ME <span class="purple">INTRODUCE</span> MYSELF
+                </h1>
+
+                <p class="home-about-body">
+                  As an Electrical Engineer, I specialize in transforming concepts
+                  into fully integrated systems — combining
+                  <i
+                    ><b class="purple"
+                      >PLC Programming, Control Systems, Robotics, and Industrial
+                      Software.</b
+                    ></i
+                  >
+                  <br /><br />
+
+                  My work spans across
+                  <i><b class="purple">Industrial Automation</b></i>
+                  (TIA Portal, SCADA, HMI),
+                  <i><b class="purple">Robotics & Mechatronics</b></i>,
+                  <i><b class="purple">MATLAB & Control Systems</b></i>,
+                  <i><b class="purple">LabVIEW & System Validation</b></i>, and
+                  <i
+                    ><b class="purple"
+                      >Mechanical Design & Rapid Prototyping.</b
+                    ></i
+                  >
+                  <br /><br />
+
+                  I engineer solutions where
+                  <i><b class="purple">Electronics meets Intelligence</b></i>
+                  and
+                  <i><b class="purple">Precision meets Performance.</b></i>
+                </p>
+
+                <div class="mt-4">
+                  <h5 class="fw-bold">FIND ME ON</h5>
+                  <p class="mb-2">
+                    Feel free to <span class="purple">connect</span> with me
+                  </p>
+
+                  <ul class="home-about-social-links">
+                    <li class="social-icons">
+                      <a
+                        href="https://github.com/Chaabane-Rayfa"
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label="GitHub"
+                        title="GitHub"
+                      >
+                        <i class="fa-brands fa-github"></i>
+                      </a>
+                    </li>
+
+                    <li class="social-icons">
+                      <a
+                        href="https://www.linkedin.com/in/rayfa-chaabane-b8ab70247/"
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label="LinkedIn"
+                        title="LinkedIn"
+                      >
+                        <i class="fa-brands fa-linkedin"></i>
+                      </a>
+                    </li>
+
+                    <li class="social-icons">
+                      <a
+                        href="https://www.instagram.com/cx.rayy?igsh=MXpvcmdoNXFpbWQ1&utm_source=qr"
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label="Instagram"
+                        title="Instagram"
+                      >
+                        <i class="fa-brands fa-instagram"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
-              <div class="col-md-5">
-                <div class="p-3 rounded-4" style="background:var(--card); border:1px solid #21262d;">
-                  <div class="d-flex align-items-center flex-wrap gap-3">
-                    <i class="devicon-react-original colored" title="React" style="font-size:36px"></i>
-                    <i class="devicon-javascript-plain colored" title="JavaScript" style="font-size:36px"></i>
-                    <i class="devicon-typescript-plain colored" title="TypeScript" style="font-size:36px"></i>
-                    <i class="devicon-nodejs-plain colored" title="Node.js" style="font-size:36px"></i>
-                    <i class="devicon-express-original" title="Express" style="font-size:36px; color:#fff;"></i>
-                    <i class="devicon-bootstrap-plain colored" title="Bootstrap" style="font-size:36px"></i>
-                    <i class="devicon-git-plain colored" title="Git" style="font-size:36px"></i>
-                  </div>
+
+              <div class="col-md-5 text-center">
+                <div class="tilt" data-tilt>
+                  <img src="Images/avatar.png" class="img-fluid" alt="avatar" />
                 </div>
               </div>
             </div>
@@ -258,14 +395,54 @@
             <h2 class="section-title">Tech <span class="purple">Stack</span></h2>
             <p class="section-sub">Some technologies I work with regularly.</p>
             <div class="row row-cols-2 row-cols-md-4 g-3 mt-1">
-              <div class="col"><div class="card h-100 text-center p-3"><i class="devicon-react-original"></i><div class="mt-2">React</div></div></div>
-              <div class="col"><div class="card h-100 text-center p-3"><i class="devicon-nextjs-original"></i><div class="mt-2">Next.js</div></div></div>
-              <div class="col"><div class="card h-100 text-center p-3"><i class="devicon-nodejs-plain"></i><div class="mt-2">Node.js</div></div></div>
-              <div class="col"><div class="card h-100 text-center p-3"><i class="devicon-express-original"></i><div class="mt-2">Express</div></div></div>
-              <div class="col"><div class="card h-100 text-center p-3"><i class="devicon-mongodb-plain"></i><div class="mt-2">MongoDB</div></div></div>
-              <div class="col"><div class="card h-100 text-center p-3"><i class="devicon-postgresql-plain"></i><div class="mt-2">Postgres</div></div></div>
-              <div class="col"><div class="card h-100 text-center p-3"><i class="devicon-docker-plain"></i><div class="mt-2">Docker</div></div></div>
-              <div class="col"><div class="card h-100 text-center p-3"><i class="devicon-aws-plain"></i><div class="mt-2">AWS</div></div></div>
+              <div class="col">
+                <div class="card h-100 text-center p-3">
+                  <i class="devicon-react-original"></i>
+                  <div class="mt-2">React</div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100 text-center p-3">
+                  <i class="devicon-nextjs-original"></i>
+                  <div class="mt-2">Next.js</div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100 text-center p-3">
+                  <i class="devicon-nodejs-plain"></i>
+                  <div class="mt-2">Node.js</div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100 text-center p-3">
+                  <i class="devicon-express-original"></i>
+                  <div class="mt-2">Express</div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100 text-center p-3">
+                  <i class="devicon-mongodb-plain"></i>
+                  <div class="mt-2">MongoDB</div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100 text-center p-3">
+                  <i class="devicon-postgresql-plain"></i>
+                  <div class="mt-2">Postgres</div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100 text-center p-3">
+                  <i class="devicon-docker-plain"></i>
+                  <div class="mt-2">Docker</div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card h-100 text-center p-3">
+                  <i class="devicon-aws-plain"></i>
+                  <div class="mt-2">AWS</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -277,69 +454,132 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-10" data-aos="fade-up">
-            <h2 class="section-title">Recent <span class="purple">Projects</span></h2>
+            <h2 class="section-title">
+              Recent <span class="purple">Projects</span>
+            </h2>
             <p class="section-sub">A few things I've built recently.</p>
 
             <div class="row g-4 mt-1">
-              <!-- Project 1 -->
               <div class="col-md-6 col-lg-4">
                 <div class="card h-100 project-card">
-                  <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop" class="card-img-top" alt="Project screenshot">
+                  <img
+                    src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop"
+                    class="card-img-top"
+                    alt="Project screenshot"
+                  />
                   <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Chat App</h5>
-                    <p class="card-text flex-grow-1">Realtime chat room built with React, Node.js and Socket.io. Deployed on Vercel.</p>
+                    <p class="card-text flex-grow-1">
+                      Realtime chat room built with React, Node.js and Socket.io.
+                      Deployed on Vercel.
+                    </p>
                     <div class="mb-3">
                       <span class="tag">React</span>
                       <span class="tag">Node</span>
                       <span class="tag">Socket.io</span>
                     </div>
                     <div class="d-flex gap-2">
-                      <a class="btn btn-outline-light btn-sm" href="#" target="_blank" rel="noreferrer"><i class="fa-brands fa-github me-1"></i>Code</a>
-                      <a class="btn btn-primary btn-sm" style="background:var(--accent); border-color:var(--accent)" href="#" target="_blank" rel="noreferrer"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i>Demo</a>
+                      <a
+                        class="btn btn-outline-light btn-sm"
+                        href="#"
+                        target="_blank"
+                        rel="noreferrer"
+                        ><i class="fa-brands fa-github me-1"></i>Code</a
+                      >
+                      <a
+                        class="btn btn-primary btn-sm"
+                        style="background: var(--accent); border-color: var(--accent)"
+                        href="#"
+                        target="_blank"
+                        rel="noreferrer"
+                        ><i class="fa-solid fa-arrow-up-right-from-square me-1"></i
+                        >Demo</a
+                      >
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Project 2 -->
               <div class="col-md-6 col-lg-4">
                 <div class="card h-100 project-card">
-                  <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop" class="card-img-top" alt="Project screenshot">
+                  <img
+                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop"
+                    class="card-img-top"
+                    alt="Project screenshot"
+                  />
                   <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Portfolio v2</h5>
-                    <p class="card-text flex-grow-1">A modern portfolio with animations, dark mode, and responsive layout.</p>
+                    <p class="card-text flex-grow-1">
+                      A modern portfolio with animations, dark mode, and responsive
+                      layout.
+                    </p>
                     <div class="mb-3">
                       <span class="tag">Next.js</span>
                       <span class="tag">Framer Motion</span>
                       <span class="tag">Tailwind</span>
                     </div>
                     <div class="d-flex gap-2">
-                      <a class="btn btn-outline-light btn-sm" href="#" target="_blank" rel="noreferrer"><i class="fa-brands fa-github me-1"></i>Code</a>
-                      <a class="btn btn-primary btn-sm" style="background:var(--accent); border-color:var(--accent)" href="#" target="_blank" rel="noreferrer"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i>Demo</a>
+                      <a
+                        class="btn btn-outline-light btn-sm"
+                        href="#"
+                        target="_blank"
+                        rel="noreferrer"
+                        ><i class="fa-brands fa-github me-1"></i>Code</a
+                      >
+                      <a
+                        class="btn btn-primary btn-sm"
+                        style="background: var(--accent); border-color: var(--accent)"
+                        href="#"
+                        target="_blank"
+                        rel="noreferrer"
+                        ><i class="fa-solid fa-arrow-up-right-from-square me-1"></i
+                        >Demo</a
+                      >
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- Project 3 -->
               <div class="col-md-6 col-lg-4">
                 <div class="card h-100 project-card">
-                  <img src="https://images.unsplash.com/photo-1499914485622-a88fac536970?q=80&w=1200&auto=format&fit=crop" class="card-img-top" alt="Project screenshot">
+                  <img
+                    src="https://images.unsplash.com/photo-1499914485622-a88fac536970?q=80&w=1200&auto=format&fit=crop"
+                    class="card-img-top"
+                    alt="Project screenshot"
+                  />
                   <div class="card-body d-flex flex-column">
                     <h5 class="card-title">Analytics Dashboard</h5>
-                    <p class="card-text flex-grow-1">Interactive dashboard with charts, filters and REST API integration.</p>
+                    <p class="card-text flex-grow-1">
+                      Interactive dashboard with charts, filters and REST API
+                      integration.
+                    </p>
                     <div class="mb-3">
                       <span class="tag">React</span>
                       <span class="tag">Chart.js</span>
                       <span class="tag">REST</span>
                     </div>
                     <div class="d-flex gap-2">
-                      <a class="btn btn-outline-light btn-sm" href="#" target="_blank" rel="noreferrer"><i class="fa-brands fa-github me-1"></i>Code</a>
-                      <a class="btn btn-primary btn-sm" style="background:var(--accent); border-color:var(--accent)" href="#" target="_blank" rel="noreferrer"><i class="fa-solid fa-arrow-up-right-from-square me-1"></i>Demo</a>
+                      <a
+                        class="btn btn-outline-light btn-sm"
+                        href="#"
+                        target="_blank"
+                        rel="noreferrer"
+                        ><i class="fa-brands fa-github me-1"></i>Code</a
+                      >
+                      <a
+                        class="btn btn-primary btn-sm"
+                        style="background: var(--accent); border-color: var(--accent)"
+                        href="#"
+                        target="_blank"
+                        rel="noreferrer"
+                        ><i class="fa-solid fa-arrow-up-right-from-square me-1"></i
+                        >Demo</a
+                      >
                     </div>
                   </div>
                 </div>
               </div>
+              <!-- /row -->
             </div>
           </div>
         </div>
@@ -361,21 +601,32 @@
                   <li class="timeline-item">
                     <span class="timeline-dot"></span>
                     <div class="ms-4">
-                      <h6 class="mb-0">Frontend Developer · <span class="purple">Acme Inc.</span></h6>
+                      <h6 class="mb-0">
+                        Frontend Developer · <span class="purple">Acme Inc.</span>
+                      </h6>
                       <small class="muted">2023 — Present</small>
-                      <p class="mb-0 mt-1">Building performant UI with React and TypeScript. Led the redesign of the design system.</p>
+                      <p class="mb-0 mt-1">
+                        Building performant UI with React and TypeScript. Led the
+                        redesign of the design system.
+                      </p>
                     </div>
                   </li>
                   <li class="timeline-item">
                     <span class="timeline-dot"></span>
                     <div class="ms-4">
-                      <h6 class="mb-0">Full‑stack Intern · <span class="purple">Startup XYZ</span></h6>
+                      <h6 class="mb-0">
+                        Full-stack Intern · <span class="purple">Startup XYZ</span>
+                      </h6>
                       <small class="muted">2022 — 2023</small>
-                      <p class="mb-0 mt-1">Implemented REST APIs with Node/Express and integrated third‑party services.</p>
+                      <p class="mb-0 mt-1">
+                        Implemented REST APIs with Node/Express and integrated
+                        third-party services.
+                      </p>
                     </div>
                   </li>
                 </ol>
               </div>
+
               <div class="col-md-6">
                 <h5 class="fw-bold mb-3">Education</h5>
                 <ol class="timeline list-unstyled">
@@ -384,7 +635,9 @@
                     <div class="ms-4">
                       <h6 class="mb-0">M.Sc. Computer Science</h6>
                       <small class="muted">2020 — 2022</small>
-                      <p class="mb-0 mt-1">University name here — focus on distributed systems and HCI.</p>
+                      <p class="mb-0 mt-1">
+                        University name here — focus on distributed systems and HCI.
+                      </p>
                     </div>
                   </li>
                   <li class="timeline-item">
@@ -396,6 +649,7 @@
                     </div>
                   </li>
                 </ol>
+
                 <a class="btn btn-outline-light btn-sm mt-2" href="#" download>
                   <i class="fa-solid fa-download me-1"></i> Download CV
                 </a>
@@ -429,7 +683,12 @@
                   <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
                 </div>
                 <div class="col-12 d-flex justify-content-end">
-                  <button class="btn btn-primary" style="background:var(--accent); border-color:var(--accent)"><i class="fa-regular fa-paper-plane me-1"></i>Send</button>
+                  <button
+                    class="btn btn-primary"
+                    style="background: var(--accent); border-color: var(--accent)"
+                  >
+                    <i class="fa-regular fa-paper-plane me-1"></i>Send
+                  </button>
                 </div>
               </div>
             </form>
@@ -441,11 +700,11 @@
     <!-- Footer -->
     <footer>
       <div class="container d-flex flex-wrap justify-content-between align-items-center">
-        <small>Built with <span class="purple">♥</span> using Bootstrap. Inspired by Soumyajit's React template.</small>
+        <small>Built with <span class="purple">♥</span> using Bootstrap.</small>
         <div class="social-icons">
-          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://github.com/Chaabane-Rayfa" target="_blank" rel="noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/rayfa-chaabane-b8ab70247/" target="_blank" rel="noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:foushe123@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
         </div>
       </div>
     </footer>
@@ -454,40 +713,44 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
+
     <script>
       AOS.init({ once: true });
-      new Typed('#typewriter', {
+
+      new Typed("#typewriter", {
         strings: [
-          'I design <span class="purple">Electrical&Mechanical Models</span>.',
-          'I program <span class="purple">Robots&PLCs</span>.',
-          'I implemente <span class="purple">Solutions</span>.',
+          'I design <span class="purple">Electrical & Mechanical Systems</span>.',
+          'I program <span class="purple">Robots & PLCs</span>.',
+          'I implement <span class="purple">Automation Solutions</span>.',
         ],
         typeSpeed: 45,
         backSpeed: 25,
         backDelay: 1600,
         smartBackspace: true,
-        loop: true
+        loop: true,
       });
 
-      // Activate Bootstrap scrollspy for nav highlighting
-      const dataSpyList = [].slice.call(document.querySelectorAll('[data-bs-spy="scroll"]'))
-      dataSpyList.forEach(function (dataSpyEl) {
-        bootstrap.ScrollSpy.getInstance(dataSpyEl) || new bootstrap.ScrollSpy(dataSpyEl, { target: '#mainNav' })
-      })
+      // Bootstrap scrollspy init (safe)
+      const spyEl = document.body;
+      bootstrap.ScrollSpy.getInstance(spyEl) ||
+        new bootstrap.ScrollSpy(spyEl, { target: "#mainNav", offset: 80 });
     </script>
-    <script>
-  document.querySelectorAll('[data-tilt]').forEach(el=>{
-    const strength = 12;
-    el.style.transition = 'transform .15s ease-out';
-    el.addEventListener('mousemove', e=>{
-      const r = el.getBoundingClientRect();
-      const x = (e.clientX - r.left) / r.width - 0.5;
-      const y = (e.clientY - r.top) / r.height - 0.5;
-      el.style.transform = `rotateY(${x*strength}deg) rotateX(${ -y*strength}deg)`;
-    });
-    el.addEventListener('mouseleave', ()=>{ el.style.transform='rotateY(0) rotateX(0)' });
-  });
-</script>
 
+    <script>
+      // Simple tilt (no external lib)
+      document.querySelectorAll("[data-tilt]").forEach((el) => {
+        const strength = 12;
+        el.style.transition = "transform .15s ease-out";
+        el.addEventListener("mousemove", (e) => {
+          const r = el.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          el.style.transform = `rotateY(${x * strength}deg) rotateX(${ -y * strength}deg)`;
+        });
+        el.addEventListener("mouseleave", () => {
+          el.style.transform = "rotateY(0) rotateX(0)";
+        });
+      });
+    </script>
   </body>
 </html>
