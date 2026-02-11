@@ -132,15 +132,25 @@
   padding: 1.25rem 1.25rem 1.35rem;
 }
 
+/* Let image control the height */
 .project-carousel img {
-  height: 320px;           /* bigger images */
-  object-fit: cover;
+  width: 100%;
+  height: auto;       /* IMPORTANT */
+  object-fit: contain; /* keeps full image visible */
+  background-color: #0d1117; /* nice background if image has empty space */
 }
 
-@media (min-width: 992px) {
+/* Optional: limit maximum height so very tall images don't break layout */
+.project-carousel {
+  max-height: 600px;
+  overflow: hidden;
+}
+
+
+/* @media (min-width: 992px) {
   .project-carousel img {
     height: 420px;         /* even bigger on desktop */
-  }
+  /*}
 }
 
 /* Make each project container bigger */
